@@ -12,7 +12,7 @@ export function AdminApiPage() {
           <div className="p-4 bg-gray-50 rounded-lg">
             <div className="flex items-center justify-between">
               <div><p className="text-sm font-medium text-gray-900">API Status</p><p className="text-xs text-gray-500 mt-0.5">Customer API access is enabled</p></div>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-green-50 text-green-600 text-xs font-medium rounded-full"><span className="w-2 h-2 bg-green-500 rounded-full" /> Active</span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 text-blue-600 text-xs font-medium rounded-full"><span className="w-2 h-2 bg-blue-500 rounded-full" /> Active</span>
             </div>
           </div>
           <div className="p-4 bg-gray-50 rounded-lg">
@@ -39,7 +39,7 @@ export function AdminApiPage() {
           <div className="p-4 bg-gray-50 rounded-lg">
             <div className="flex items-center justify-between">
               <div><p className="text-sm font-medium text-gray-900">Provider Status</p><p className="text-xs text-gray-500 mt-0.5">SMS provider is connected and operational</p></div>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-green-50 text-green-600 text-xs font-medium rounded-full"><span className="w-2 h-2 bg-green-500 rounded-full" /> Connected</span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-50 text-blue-600 text-xs font-medium rounded-full"><span className="w-2 h-2 bg-blue-500 rounded-full" /> Connected</span>
             </div>
           </div>
         </div>

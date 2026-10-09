@@ -18,7 +18,7 @@ const variantClasses: Record<Variant, string> = {
   outline: 'border border-gray-300 text-gray-700 hover:bg-gray-50 bg-white',
   ghost: 'text-gray-600 hover:bg-gray-100',
   danger: 'bg-red-600 text-white hover:bg-red-700 shadow-sm',
-  success: 'bg-green-600 text-white hover:bg-green-700 shadow-sm',
+  success: 'bg-blue-600 text-white hover:bg-blue-700 shadow-sm',
 };
 
 const sizeClasses: Record<Size, string> = {

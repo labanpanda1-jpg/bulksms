@@ -33,7 +33,7 @@ export function AdminDeliveryReportsPage() {
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard label="Total Sent" value={formatNumber(totalSent)} icon={<FileText className="w-6 h-6" />} color="blue" />
-        <StatCard label="Delivered" value={formatNumber(totalDelivered)} icon={<FileText className="w-6 h-6" />} color="green" />
+        <StatCard label="Delivered" value={formatNumber(totalDelivered)} icon={<FileText className="w-6 h-6" />} color="blue" />
         <StatCard label="Failed" value={formatNumber(totalFailed)} icon={<FileText className="w-6 h-6" />} color="red" />
         <StatCard label="Delivery Rate" value={totalSent > 0 ? `${((totalDelivered / totalSent) * 100).toFixed(1)}%` : '—'} icon={<FileText className="w-6 h-6" />} color="blue" />
       </div>
@@ -59,7 +59,7 @@ export function AdminDeliveryReportsPage() {
                 { key: 'name', header: 'Campaign', render: c => <span className="font-medium">{c.name}</span> },
                 { key: 'user_name', header: 'Customer', render: c => <span className="text-gray-600">{c.user_name}</span> },
                 { key: 'sent', header: 'Sent', render: c => formatNumber(c.sent) },
-                { key: 'delivered', header: 'Delivered', render: c => <span className="text-green-600">{formatNumber(c.delivered)}</span> },
+                { key: 'delivered', header: 'Delivered', render: c => <span className="text-blue-600">{formatNumber(c.delivered)}</span> },
                 { key: 'failed', header: 'Failed', render: c => <span className="text-red-500">{formatNumber(c.failed)}</span> },
                 { key: 'status', header: 'Status', render: c => <StatusBadge status={c.status} /> },
                 { key: 'created_at', header: 'Date', render: c => <span className="text-gray-400">{formatDate(c.created_at)}</span> },

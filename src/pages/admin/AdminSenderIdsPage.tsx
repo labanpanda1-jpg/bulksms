@@ -56,7 +56,7 @@ export function AdminSenderIdsPage() {
             {senderIds.map(sid => (
               <div key={sid.id} className="flex items-center justify-between p-4">
                 <div className="flex items-center gap-3">
-                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${sid.status === 'APPROVED' ? 'bg-green-50 text-green-600' : sid.status === 'PENDING' ? 'bg-amber-50 text-amber-600' : 'bg-red-50 text-red-600'}`}><Radio className="w-5 h-5" /></div>
+                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${sid.status === 'APPROVED' ? 'bg-blue-50 text-blue-600' : sid.status === 'PENDING' ? 'bg-amber-50 text-amber-600' : 'bg-red-50 text-red-600'}`}><Radio className="w-5 h-5" /></div>
                   <div>
                     <p className="font-medium text-gray-900">{sid.name}</p>
                     <p className="text-xs text-gray-400">Requested {formatDate(sid.created_at)}{sid.rejection_reason && ` · ${sid.rejection_reason}`}</p>

@@ -84,7 +84,7 @@ export function DeveloperPage() {
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600"><Key className="w-5 h-5" /></div>
                   <div>
-                    <div className="flex items-center gap-2"><p className="text-sm font-medium text-gray-900">{k.name}</p><Badge color={k.status === 'active' ? 'green' : 'gray'}>{k.status}</Badge></div>
+                    <div className="flex items-center gap-2"><p className="text-sm font-medium text-gray-900">{k.name}</p><Badge color={k.status === 'active' ? 'blue' : 'gray'}>{k.status}</Badge></div>
                     <p className="text-xs text-gray-400 font-mono mt-0.5">{k.key_preview}</p>
                     <p className="text-xs text-gray-400 mt-0.5">{formatNumber(k.requests_count)} requests · {k.last_used ? `Last used ${formatDate(k.last_used)}` : 'Never used'}</p>
                   </div>

@@ -48,7 +48,7 @@ export function AdminPaymentsPage() {
                 { key: 'sms_credits', header: 'SMS Credits', render: p => p.sms_credits.toLocaleString() },
                 { key: 'amount', header: 'Amount', render: p => <span className="font-semibold text-gray-900">{formatCurrency(p.amount)}</span> },
                 { key: 'payment_method', header: 'Method', render: p => <span className="uppercase text-xs">{p.payment_method}</span> },
-                { key: 'status', header: 'Status', render: p => <Badge color={p.status === 'completed' ? 'green' : p.status === 'pending' ? 'amber' : 'red'}>{p.status}</Badge> },
+                { key: 'status', header: 'Status', render: p => <Badge color={p.status === 'completed' ? 'blue' : p.status === 'pending' ? 'amber' : 'red'}>{p.status}</Badge> },
                 { key: 'created_at', header: 'Date', render: p => <span className="text-gray-400">{formatDateTime(p.created_at)}</span> },
               ]}
               data={payments}

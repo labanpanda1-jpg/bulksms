@@ -73,9 +73,9 @@ export function AdminPackagesPage() {
               <p className="text-2xl font-bold text-gray-900 mt-1">{formatNumber(p.sms_quantity)}</p>
               <p className="text-xs text-gray-400">SMS</p>
               <p className="text-xl font-bold text-blue-600 mt-3">{formatCurrency(p.price)}</p>
-              {p.discount > 0 && <Badge color="green" className="mt-1">{p.discount}% off</Badge>}
+              {p.discount > 0 && <Badge color="blue" className="mt-1">{p.discount}% off</Badge>}
               <div className="flex items-center justify-center gap-2 mt-3">
-                <Badge color={p.active ? 'green' : 'gray'}>{p.active ? 'Active' : 'Inactive'}</Badge>
+                <Badge color={p.active ? 'blue' : 'gray'}>{p.active ? 'Active' : 'Inactive'}</Badge>
               </div>
               {p.description && <p className="text-xs text-gray-500 mt-2">{p.description}</p>}
               <div className="flex gap-2 mt-4 justify-center">

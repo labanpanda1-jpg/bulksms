@@ -44,9 +44,9 @@ export function AdminTransactionsPage() {
                 { key: 'user_name', header: 'Customer', render: t => <span className="text-gray-700">{t.user_name}</span> },
                 { key: 'type', header: 'Type', render: t => <Badge color="gray">{t.type.replace(/_/g, ' ')}</Badge> },
                 { key: 'description', header: 'Description' },
-                { key: 'credits', header: 'Credits', render: t => <span className={`font-semibold ${t.credits > 0 ? 'text-green-600' : 'text-gray-600'}`}>{t.credits > 0 ? '+' : ''}{formatNumber(t.credits)}</span> },
+                { key: 'credits', header: 'Credits', render: t => <span className={`font-semibold ${t.credits > 0 ? 'text-blue-600' : 'text-gray-600'}`}>{t.credits > 0 ? '+' : ''}{formatNumber(t.credits)}</span> },
                 { key: 'amount', header: 'Amount', render: t => <span className="text-gray-500">{t.amount > 0 ? formatCurrency(t.amount) : '—'}</span> },
-                { key: 'status', header: 'Status', render: t => <Badge color={t.status === 'completed' ? 'green' : 'amber'}>{t.status}</Badge> },
+                { key: 'status', header: 'Status', render: t => <Badge color={t.status === 'completed' ? 'blue' : 'amber'}>{t.status}</Badge> },
               ]}
               data={data.data}
               loading={isLoading}

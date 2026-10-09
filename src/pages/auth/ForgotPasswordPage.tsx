@@ -31,8 +31,8 @@ export function ForgotPasswordPage() {
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
         {sent ? (
           <div className="text-center">
-            <div className="w-16 h-16 mx-auto bg-green-50 rounded-full flex items-center justify-center mb-4">
-              <Mail className="w-8 h-8 text-green-500" />
+            <div className="w-16 h-16 mx-auto bg-blue-50 rounded-full flex items-center justify-center mb-4">
+              <Mail className="w-8 h-8 text-blue-500" />
             </div>
             <h2 className="text-2xl font-bold text-gray-900">Check your email</h2>
             <p className="text-sm text-gray-500 mt-2">If an account exists with {email}, a password reset link has been sent.</p>

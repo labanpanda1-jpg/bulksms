@@ -54,7 +54,7 @@ export function AdminCustomersPage() {
                 { key: 'sms_balance', header: 'SMS Balance', render: c => <span className="font-semibold text-blue-600">{formatNumber(c.sms_balance)}</span> },
                 { key: 'total_sent', header: 'Sent', render: c => formatNumber(c.total_sent) },
                 { key: 'total_spent', header: 'Spent', render: c => formatCurrency(c.total_spent) },
-                { key: 'status', header: 'Status', render: c => <Badge color={c.status === 'active' ? 'green' : 'red'}>{c.status}</Badge> },
+                { key: 'status', header: 'Status', render: c => <Badge color={c.status === 'active' ? 'blue' : 'red'}>{c.status}</Badge> },
                 { key: 'created_at', header: 'Joined', render: c => <span className="text-gray-400">{formatDate(c.created_at)}</span> },
                 { key: 'actions', header: '', render: c => <Link to={`/admin/customers/${c.id}`} className="text-blue-600 hover:text-blue-700"><Eye className="w-4 h-4" /></Link> },
               ]}

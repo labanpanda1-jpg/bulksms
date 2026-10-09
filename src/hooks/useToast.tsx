@@ -38,13 +38,13 @@ export function ToastProvider({ children }: { children: ReactNode }) {
           <div
             key={t.id}
             className={`flex items-start gap-3 rounded-lg shadow-lg p-4 bg-white border-l-4 animate-slide-in ${
-              t.type === 'success' ? 'border-green-500' :
+              t.type === 'success' ? 'border-blue-500' :
               t.type === 'error' ? 'border-red-500' :
               t.type === 'warning' ? 'border-amber-500' :
               'border-blue-500'
             }`}
           >
-            {t.type === 'success' && <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />}
+            {t.type === 'success' && <CheckCircle className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />}
             {t.type === 'error' && <XCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />}
             {t.type === 'warning' && <AlertCircle className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />}
             {t.type === 'info' && <Info className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />}

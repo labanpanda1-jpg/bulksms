@@ -119,7 +119,7 @@ export function AdminPricingPage() {
                   <td className="px-6 py-3 text-sm text-gray-600">{t.min_quantity.toLocaleString()}</td>
                   <td className="px-6 py-3 text-sm text-gray-600">{t.max_quantity ? t.max_quantity.toLocaleString() : 'Unlimited'}</td>
                   <td className="px-6 py-3 text-sm font-semibold text-blue-600">{formatCurrency(t.price_per_sms)}</td>
-                  <td className="px-6 py-3"><Badge color={t.active ? 'green' : 'gray'}>{t.active ? 'Active' : 'Inactive'}</Badge></td>
+                  <td className="px-6 py-3"><Badge color={t.active ? 'blue' : 'gray'}>{t.active ? 'Active' : 'Inactive'}</Badge></td>
                   <td className="px-6 py-3"><div className="flex gap-1">
                     <button onClick={() => { setEditTier(t); setTierForm({ min_quantity: t.min_quantity, max_quantity: t.max_quantity || 0, price_per_sms: t.price_per_sms, label: t.label || '', active: t.active }); setShowAdd(true); }} className="p-1.5 text-gray-400 hover:text-blue-600 rounded"><Edit2 className="w-4 h-4" /></button>
                     <button onClick={() => setShowDelete(t)} className="p-1.5 text-gray-400 hover:text-red-500 rounded"><Trash2 className="w-4 h-4" /></button>

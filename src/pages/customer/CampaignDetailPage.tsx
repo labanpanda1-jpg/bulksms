@@ -75,7 +75,7 @@ export function CampaignDetailPage() {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard label="Recipients" value={formatNumber(campaign.recipient_count)} icon={<Users />} color="blue" />
         <StatCard label="SMS Units" value={formatNumber(campaign.sms_units)} icon={<Send />} color="blue" />
-        <StatCard label="Cost" value={formatCurrency(campaign.cost)} icon={<Mail />} color="green" />
+        <StatCard label="Cost" value={formatCurrency(campaign.cost)} icon={<Mail />} color="blue" />
         <StatCard label="Delivery Rate" value={campaign.sent > 0 ? `${((campaign.delivered / campaign.sent) * 100).toFixed(1)}%` : '—'} icon={<CheckCircle />} color="amber" />
       </div>
 
@@ -153,7 +153,7 @@ export function CampaignDetailPage() {
             ) : <div className="h-48 flex items-center justify-center text-gray-400 text-sm">No data yet</div>}
             <div className="space-y-2 mt-4">
               <div className="flex items-center justify-between text-sm">
-                <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-green-500" /><span className="text-gray-600">Delivered</span></div>
+                <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-blue-500" /><span className="text-gray-600">Delivered</span></div>
                 <span className="font-medium text-gray-900">{formatNumber(campaign.delivered)}</span>
               </div>
               <div className="flex items-center justify-between text-sm">

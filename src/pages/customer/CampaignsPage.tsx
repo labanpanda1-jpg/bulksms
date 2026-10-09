@@ -65,7 +65,7 @@ export function CampaignsPage() {
             { key: 'recipient_count', header: 'Recipients', render: c => formatNumber(c.recipient_count) },
             { key: 'sms_units', header: 'SMS Units', render: c => formatNumber(c.sms_units) },
             { key: 'status', header: 'Status', render: c => <StatusBadge status={c.status} /> },
-            { key: 'delivered', header: 'Delivered', render: c => <span className="text-green-600">{formatNumber(c.delivered)}</span> },
+            { key: 'delivered', header: 'Delivered', render: c => <span className="text-blue-600">{formatNumber(c.delivered)}</span> },
             { key: 'failed', header: 'Failed', render: c => <span className="text-red-500">{formatNumber(c.failed)}</span> },
             { key: 'created_at', header: 'Created', render: c => <span className="text-gray-400">{formatDate(c.created_at)}</span> },
             { key: 'actions', header: '', render: c => <Link to={`/app/campaigns/${c.id}`} className="text-blue-600 hover:text-blue-700"><Eye className="w-4 h-4" /></Link> },

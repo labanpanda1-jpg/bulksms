@@ -47,16 +47,16 @@ export function TransactionsPage() {
             <DataTable<Transaction>
               columns={[
                 { key: 'created_at', header: 'Date', render: t => <span className="text-gray-400">{formatDate(t.created_at)}</span> },
-                { key: 'type', header: 'Type', render: t => <Badge color={t.type === 'BONUS' || t.type === 'PURCHASE' || t.type === 'REFUND' ? 'green' : t.type === 'SMS_DEBIT' ? 'gray' : 'amber'}>{t.type.replace(/_/g, ' ')}</Badge> },
+                { key: 'type', header: 'Type', render: t => <Badge color={t.type === 'BONUS' || t.type === 'PURCHASE' || t.type === 'REFUND' ? 'blue' : t.type === 'SMS_DEBIT' ? 'gray' : 'amber'}>{t.type.replace(/_/g, ' ')}</Badge> },
                 { key: 'description', header: 'Description', render: t => <span className="text-gray-700">{t.description}</span> },
                 { key: 'credits', header: 'Credits', render: t => (
-                  <span className={`font-semibold flex items-center gap-1 ${t.credits > 0 ? 'text-green-600' : 'text-gray-600'}`}>
+                  <span className={`font-semibold flex items-center gap-1 ${t.credits > 0 ? 'text-blue-600' : 'text-gray-600'}`}>
                     {t.credits > 0 ? <Plus className="w-3 h-3" /> : <Minus className="w-3 h-3" />}{formatNumber(Math.abs(t.credits))}
                   </span>
                 ) },
                 { key: 'balance_after', header: 'Balance', render: t => <span className="text-gray-500">{formatNumber(t.balance_after)}</span> },
                 { key: 'amount', header: 'Amount', render: t => <span className="text-gray-500">{t.amount > 0 ? `KSh ${t.amount.toLocaleString()}` : '—'}</span> },
-                { key: 'status', header: 'Status', render: t => <Badge color={t.status === 'completed' ? 'green' : 'amber'}>{t.status}</Badge> },
+                { key: 'status', header: 'Status', render: t => <Badge color={t.status === 'completed' ? 'blue' : 'amber'}>{t.status}</Badge> },
               ]}
               data={transactions}
               loading={isLoading}

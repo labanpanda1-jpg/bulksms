@@ -82,7 +82,7 @@ export function AdminCustomerDetailPage() {
           <h1 className="text-2xl font-bold text-gray-900">{customer.name}</h1>
           <p className="text-sm text-gray-500">{customer.email} · {customer.business_name}</p>
         </div>
-        <Badge color={customer.status === 'active' ? 'green' : 'red'}>{customer.status}</Badge>
+        <Badge color={customer.status === 'active' ? 'blue' : 'red'}>{customer.status}</Badge>
         {customer.status === 'active' ? (
           <Button variant="danger" size="sm" onClick={() => setShowSuspend(true)}><Ban className="w-4 h-4" /> Suspend</Button>
         ) : (
@@ -94,7 +94,7 @@ export function AdminCustomerDetailPage() {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard label="SMS Balance" value={formatNumber(customer.sms_balance)} icon={<Wallet className="w-6 h-6" />} color="blue" />
         <StatCard label="Total Sent" value={formatNumber(customer.total_sent)} icon={<Send className="w-6 h-6" />} color="blue" />
-        <StatCard label="Total Spent" value={formatCurrency(customer.total_spent)} icon={<Receipt className="w-6 h-6" />} color="green" />
+        <StatCard label="Total Spent" value={formatCurrency(customer.total_spent)} icon={<Receipt className="w-6 h-6" />} color="blue" />
         <StatCard label="Campaigns" value={formatNumber(customer.campaigns_count)} icon={<Mail className="w-6 h-6" />} color="amber" />
       </div>
 
@@ -115,7 +115,7 @@ export function AdminCustomerDetailPage() {
             <DetailRow label="Contacts" value={formatNumber(customer.contacts_count)} />
             <DetailRow label="Delivery Rate" value={customer.total_sent > 0 ? `${((customer.total_delivered / customer.total_sent) * 100).toFixed(1)}%` : '—'} />
             <DetailRow label="Joined" value={formatDate(customer.created_at)} />
-            <DetailRow label="Status" value={<Badge color={customer.status === 'active' ? 'green' : 'red'}>{customer.status}</Badge>} />
+            <DetailRow label="Status" value={<Badge color={customer.status === 'active' ? 'blue' : 'red'}>{customer.status}</Badge>} />
           </div>
         </Card>
       )}
@@ -145,7 +145,7 @@ export function AdminCustomerDetailPage() {
                 { key: 'created_at', header: 'Date', render: (t: any) => <span className="text-gray-400">{formatDate(t.created_at)}</span> },
                 { key: 'type', header: 'Type', render: (t: any) => <Badge color="gray">{t.type.replace(/_/g, ' ')}</Badge> },
                 { key: 'description', header: 'Description' },
-                { key: 'credits', header: 'Credits', render: (t: any) => <span className={t.credits > 0 ? 'text-green-600 font-semibold' : 'text-gray-600'}>{t.credits > 0 ? '+' : ''}{t.credits}</span> },
+                { key: 'credits', header: 'Credits', render: (t: any) => <span className={t.credits > 0 ? 'text-blue-600 font-semibold' : 'text-gray-600'}>{t.credits > 0 ? '+' : ''}{t.credits}</span> },
                 { key: 'balance_after', header: 'Balance', render: (t: any) => formatNumber(t.balance_after) },
               ]}
               data={txData.data.filter((t: any) => t.user_id === id)}

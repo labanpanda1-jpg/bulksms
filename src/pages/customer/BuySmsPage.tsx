@@ -56,7 +56,7 @@ export function BuySmsPage() {
         <div><h1 className="text-2xl font-bold text-gray-900">Payment Receipt</h1></div>
         <Card className="max-w-2xl mx-auto">
           <div className="text-center pb-6 border-b border-gray-100">
-            <div className="w-16 h-16 mx-auto bg-green-50 rounded-full flex items-center justify-center mb-3"><Check className="w-8 h-8 text-green-500" /></div>
+            <div className="w-16 h-16 mx-auto bg-blue-50 rounded-full flex items-center justify-center mb-3"><Check className="w-8 h-8 text-blue-500" /></div>
             <h2 className="text-xl font-bold text-gray-900">Payment Successful</h2>
             <p className="text-sm text-gray-500">Your SMS credits have been added</p>
           </div>
@@ -67,7 +67,7 @@ export function BuySmsPage() {
             <Row label="SMS Credits" value={`${formatNumber(paymentData.sms_credits)} SMS`} />
             <Row label="Amount" value={formatCurrency(paymentData.amount)} />
             <Row label="Payment Method" value={paymentData.payment_method.toUpperCase()} />
-            <Row label="Status" value={<Badge color="green">Completed</Badge>} />
+            <Row label="Status" value={<Badge color="blue">Completed</Badge>} />
           </div>
           <div className="flex gap-3 justify-center pt-4 border-t border-gray-100">
             <Button variant="outline" onClick={() => window.print()}>Print Receipt</Button>
@@ -98,7 +98,7 @@ export function BuySmsPage() {
               <p className="text-sm font-medium text-gray-500">{pkg.name}</p>
               <p className="text-3xl font-bold text-gray-900 mt-2">{formatNumber(pkg.sms_quantity)}</p>
               <p className="text-sm text-gray-400">SMS Credits</p>
-              {pkg.discount > 0 && <Badge color="green" className="mt-2">Save {pkg.discount}%</Badge>}
+              {pkg.discount > 0 && <Badge color="blue" className="mt-2">Save {pkg.discount}%</Badge>}
               <p className="text-2xl font-bold text-blue-600 mt-4">{formatCurrency(pkg.price)}</p>
               <p className="text-xs text-gray-400">{formatCurrency(pkg.price / pkg.sms_quantity)} per SMS</p>
               {pkg.description && <p className="text-xs text-gray-500 mt-3">{pkg.description}</p>}

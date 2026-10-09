@@ -22,7 +22,7 @@ export function AdminDashboard() {
           <>
             <StatCard label="Total Customers" value={formatNumber(s?.total_customers || 0)} icon={<Users className="w-6 h-6" />} color="blue" />
             <StatCard label="SMS Sent (Month)" value={formatNumber(s?.sms_sent_this_month || 0)} icon={<Send className="w-6 h-6" />} color="blue" />
-            <StatCard label="Revenue" value={formatCurrency(s?.revenue || 0)} icon={<DollarSign className="w-6 h-6" />} color="green" />
+            <StatCard label="Revenue" value={formatCurrency(s?.revenue || 0)} icon={<DollarSign className="w-6 h-6" />} color="blue" />
             <StatCard label="Failed Messages" value={formatNumber(s?.failed_messages || 0)} icon={<AlertCircle className="w-6 h-6" />} color="red" />
           </>
         )}
@@ -33,7 +33,7 @@ export function AdminDashboard() {
           <>
             <StatCard label="Active Customers" value={formatNumber(s?.active_customers || 0)} icon={<UserCircle className="w-6 h-6" />} color="blue" />
             <StatCard label="SMS Sent Today" value={formatNumber(s?.sms_sent_today || 0)} icon={<Send className="w-6 h-6" />} color="blue" />
-            <StatCard label="Total Credits" value={formatNumber(s?.total_sms_credits || 0)} icon={<Wallet className="w-6 h-6" />} color="green" />
+            <StatCard label="Total Credits" value={formatNumber(s?.total_sms_credits || 0)} icon={<Wallet className="w-6 h-6" />} color="blue" />
             <StatCard label="Pending Payments" value={formatNumber(s?.pending_payments || 0)} icon={<DollarSign className="w-6 h-6" />} color="amber" />
           </>
         )}

@@ -156,7 +156,7 @@ export function ImportPage() {
                     <td className="px-4 py-2 text-sm text-gray-700">{c.phone || '—'}</td>
                     <td className="px-4 py-2 text-sm text-gray-500">{c.email || '—'}</td>
                     <td className="px-4 py-2 text-sm text-gray-500">{c.company || '—'}</td>
-                    <td className="px-4 py-2">{isValidKenyanPhone(c.phone) ? <CheckCircle className="w-4 h-4 text-green-500" /> : <AlertCircle className="w-4 h-4 text-red-500" />}</td>
+                    <td className="px-4 py-2">{isValidKenyanPhone(c.phone) ? <CheckCircle className="w-4 h-4 text-blue-500" /> : <AlertCircle className="w-4 h-4 text-red-500" />}</td>
                   </tr>
                 ))}
               </tbody>
@@ -172,11 +172,11 @@ export function ImportPage() {
       {step === 'result' && result && (
         <Card>
           <div className="text-center py-8">
-            <div className="w-16 h-16 mx-auto bg-green-50 rounded-full flex items-center justify-center mb-4"><CheckCircle className="w-8 h-8 text-green-500" /></div>
+            <div className="w-16 h-16 mx-auto bg-blue-50 rounded-full flex items-center justify-center mb-4"><CheckCircle className="w-8 h-8 text-blue-500" /></div>
             <h2 className="text-xl font-bold text-gray-900">Import Complete</h2>
             <p className="text-sm text-gray-500 mt-1">Your contacts have been imported successfully</p>
             <div className="grid grid-cols-3 gap-4 mt-8 max-w-md mx-auto">
-              <div className="text-center"><p className="text-3xl font-bold text-green-600">{result.imported}</p><p className="text-xs text-gray-500 mt-1">Imported</p></div>
+              <div className="text-center"><p className="text-3xl font-bold text-blue-600">{result.imported}</p><p className="text-xs text-gray-500 mt-1">Imported</p></div>
               <div className="text-center"><p className="text-3xl font-bold text-amber-600">{result.duplicates}</p><p className="text-xs text-gray-500 mt-1">Duplicates</p></div>
               <div className="text-center"><p className="text-3xl font-bold text-red-500">{result.invalid}</p><p className="text-xs text-gray-500 mt-1">Invalid</p></div>
             </div>

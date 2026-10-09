@@ -50,7 +50,7 @@ export function CustomerDashboard() {
           <>
             <StatCard label="SMS Balance" value={formatNumber(stats?.balance || 0)} icon={<MessageSquare className="w-6 h-6" />} color="blue" />
             <StatCard label="Total Sent" value={formatNumber(stats?.total_sent || 0)} icon={<Send className="w-6 h-6" />} color="blue" />
-            <StatCard label="Delivered" value={formatNumber(stats?.total_delivered || 0)} icon={<CheckCircle className="w-6 h-6" />} color="green" />
+            <StatCard label="Delivered" value={formatNumber(stats?.total_delivered || 0)} icon={<CheckCircle className="w-6 h-6" />} color="blue" />
             <StatCard label="Delivery Rate" value={`${(stats?.delivery_rate || 0).toFixed(1)}%`} icon={<TrendingUp className="w-6 h-6" />} color="amber" />
           </>
         )}
@@ -62,7 +62,7 @@ export function CustomerDashboard() {
           { label: 'Send SMS', icon: Send, path: '/app/send-sms', color: 'text-blue-600 bg-blue-50' },
           { label: 'Create Campaign', icon: Mail, path: '/app/campaigns', color: 'text-blue-600 bg-blue-50' },
           { label: 'Import Contacts', icon: Upload, path: '/app/import', color: 'text-slate-600 bg-slate-100' },
-          { label: 'Buy SMS', icon: Wallet, path: '/app/buy-sms', color: 'text-green-600 bg-green-50' },
+          { label: 'Buy SMS', icon: Wallet, path: '/app/buy-sms', color: 'text-blue-600 bg-blue-50' },
         ].map(action => (
           <Link key={action.label} to={action.path}>
             <div className="bg-white rounded-xl border border-gray-200 p-4 hover:shadow-md hover:border-blue-200 transition-all cursor-pointer group">
@@ -121,7 +121,7 @@ export function CustomerDashboard() {
                     <p className="text-sm font-medium text-gray-900 truncate">{tx.description}</p>
                     <p className="text-xs text-gray-400">{formatDate(tx.created_at)}</p>
                   </div>
-                  <span className={`text-sm font-semibold ${tx.credits > 0 ? 'text-green-600' : 'text-gray-600'}`}>
+                  <span className={`text-sm font-semibold ${tx.credits > 0 ? 'text-blue-600' : 'text-gray-600'}`}>
                     {tx.credits > 0 ? '+' : ''}{tx.credits} SMS
                   </span>
                 </div>

@@ -35,7 +35,7 @@ export function DeliveryReportsPage() {
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard label="Total Messages" value={formatNumber(r?.total_sent || 0)} icon={<FileText className="w-6 h-6" />} color="blue" />
-        <StatCard label="Delivery Rate" value={`${(r?.delivery_rate || 0).toFixed(1)}%`} icon={<FileText className="w-6 h-6" />} color="green" />
+        <StatCard label="Delivery Rate" value={`${(r?.delivery_rate || 0).toFixed(1)}%`} icon={<FileText className="w-6 h-6" />} color="blue" />
         <StatCard label="Failed Rate" value={`${(r?.failed_rate || 0).toFixed(1)}%`} icon={<FileText className="w-6 h-6" />} color="red" />
         <StatCard label="Total SMS Units" value={formatNumber(r?.total_sms_units || 0)} icon={<FileText className="w-6 h-6" />} color="blue" />
       </div>
@@ -80,7 +80,7 @@ export function DeliveryReportsPage() {
               { key: 'name', header: 'Campaign', render: (c: any) => <span className="font-medium text-gray-900">{c.name}</span> },
               { key: 'sender_id', header: 'Sender' },
               { key: 'sent', header: 'Sent', render: (c: any) => formatNumber(c.sent) },
-              { key: 'delivered', header: 'Delivered', render: (c: any) => <span className="text-green-600">{formatNumber(c.delivered)}</span> },
+              { key: 'delivered', header: 'Delivered', render: (c: any) => <span className="text-blue-600">{formatNumber(c.delivered)}</span> },
               { key: 'failed', header: 'Failed', render: (c: any) => <span className="text-red-500">{formatNumber(c.failed)}</span> },
               { key: 'status', header: 'Status', render: (c: any) => <StatusBadge status={c.status} /> },
               { key: 'created_at', header: 'Date', render: (c: any) => <span className="text-gray-400">{formatDateTime(c.created_at)}</span> },

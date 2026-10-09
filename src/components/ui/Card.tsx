@@ -50,12 +50,11 @@ interface StatCardProps {
   value: string | number;
   icon: ReactNode;
   trend?: { value: string; positive: boolean };
-  color?: 'blue' | 'green' | 'amber' | 'red' | 'slate';
+  color?: 'blue' | 'amber' | 'red' | 'slate';
 }
 
 const statColors = {
   blue: 'bg-blue-50 text-blue-600',
-  green: 'bg-green-50 text-green-600',
   amber: 'bg-amber-50 text-amber-600',
   red: 'bg-red-50 text-red-600',
   slate: 'bg-slate-100 text-slate-600',
@@ -69,7 +68,7 @@ export function StatCard({ label, value, icon, trend, color = 'blue' }: StatCard
           <p className="text-sm font-medium text-gray-500">{label}</p>
           <p className="text-2xl font-bold text-gray-900 mt-2">{value}</p>
           {trend && (
-            <p className={clsx('text-xs font-medium mt-2', trend.positive ? 'text-green-600' : 'text-red-600')}>
+            <p className={clsx('text-xs font-medium mt-2', trend.positive ? 'text-blue-600' : 'text-red-600')}>
               {trend.value}
             </p>
           )}
