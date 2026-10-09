@@ -101,6 +101,7 @@ const adminNav: NavSection[] = [
     items: [
       { label: 'API', icon: Code, path: '/admin/api' },
       { label: 'Audit Logs', icon: ScrollText, path: '/admin/audit-logs' },
+      { label: 'Website Content', icon: FileText, path: '/admin/content' },
       { label: 'Settings', icon: Settings, path: '/admin/settings' },
     ],
   },

@@ -41,6 +41,8 @@ import { AdminTransactionsPage } from '@/pages/admin/AdminTransactionsPage';
 import { AdminApiPage } from '@/pages/admin/AdminApiPage';
 import { AdminAuditLogsPage } from '@/pages/admin/AdminAuditLogsPage';
 import { AdminSettingsPage } from '@/pages/admin/AdminSettingsPage';
+import { AdminContentPage } from '@/pages/admin/AdminContentPage';
+import { PublicLandingPage } from '@/pages/PublicLandingPage';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -58,7 +60,7 @@ function App() {
         <AuthProvider>
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<Navigate to="/login" replace />} />
+              <Route path="/" element={<PublicLandingPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/forgot-password" element={<ForgotPasswordPage />} />
@@ -100,6 +102,7 @@ function App() {
                 <Route path="api" element={<AdminApiPage />} />
                 <Route path="audit-logs" element={<AdminAuditLogsPage />} />
                 <Route path="settings" element={<AdminSettingsPage />} />
+                <Route path="content" element={<AdminContentPage />} />
               </Route>
 
               <Route path="*" element={<Navigate to="/login" replace />} />
