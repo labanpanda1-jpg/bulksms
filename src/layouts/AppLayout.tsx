@@ -160,7 +160,7 @@ export function AppLayout({ role }: { role: 'customer' | 'admin' }) {
       )}>
         {/* Logo */}
         <div className="h-16 flex items-center gap-2.5 px-6 border-b border-gray-200 flex-shrink-0">
-          <div className="w-9 h-9 bg-teal-600 rounded-lg flex items-center justify-center">
+          <div className="w-9 h-9 bg-blue-600 rounded-lg flex items-center justify-center">
             <MessageSquare className="w-5 h-5 text-white" />
           </div>
           <div>
@@ -186,7 +186,7 @@ export function AppLayout({ role }: { role: 'customer' | 'admin' }) {
                       to={item.path}
                       className={clsx(
                         'flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors',
-                        active ? 'bg-teal-50 text-teal-700' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                        active ? 'bg-blue-50 text-blue-700' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                       )}
                     >
                       <Icon className="w-[18px] h-[18px]" />
@@ -202,7 +202,7 @@ export function AppLayout({ role }: { role: 'customer' | 'admin' }) {
         {/* User section */}
         <div className="border-t border-gray-200 p-3 flex-shrink-0">
           <div className="flex items-center gap-3 px-3 py-2">
-            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center text-white text-sm font-semibold">
+            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-blue-500 to-sky-600 flex items-center justify-center text-white text-sm font-semibold">
               {user?.name?.charAt(0) || 'U'}
             </div>
             <div className="flex-1 min-w-0">
@@ -232,16 +232,16 @@ export function AppLayout({ role }: { role: 'customer' | 'admin' }) {
               <input
                 type="text"
                 placeholder="Search..."
-                className="w-64 pl-9 pr-4 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-gray-50"
+                className="w-64 pl-9 pr-4 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-50"
               />
             </div>
           </div>
 
           <div className="flex items-center gap-2">
             {role === 'admin' && (
-              <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-teal-50 rounded-lg">
-                <Shield className="w-4 h-4 text-teal-600" />
-                <span className="text-xs font-medium text-teal-700">{user?.role === 'SUPER_ADMIN' ? 'Super Admin' : 'Admin'}</span>
+              <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-blue-50 rounded-lg">
+                <Shield className="w-4 h-4 text-blue-600" />
+                <span className="text-xs font-medium text-blue-700">{user?.role === 'SUPER_ADMIN' ? 'Super Admin' : 'Admin'}</span>
               </div>
             )}
             <div className="relative">
@@ -263,7 +263,7 @@ export function AppLayout({ role }: { role: 'customer' | 'admin' }) {
                     <div className="px-4 py-3 border-b border-gray-100 flex items-center justify-between">
                       <span className="font-semibold text-sm text-gray-900">Notifications</span>
                       {unreadCount > 0 && (
-                        <button onClick={markAllRead} className="text-xs text-teal-600 hover:text-teal-700 font-medium">
+                        <button onClick={markAllRead} className="text-xs text-blue-600 hover:text-blue-700 font-medium">
                           Mark all read
                         </button>
                       )}
@@ -273,9 +273,9 @@ export function AppLayout({ role }: { role: 'customer' | 'admin' }) {
                         <p className="text-sm text-gray-400 text-center py-8">No notifications</p>
                       ) : (
                         notifications.slice(0, 10).map(n => (
-                          <div key={n.id} className={clsx('px-4 py-3 border-b border-gray-50', !n.read && 'bg-teal-50/30')}>
+                          <div key={n.id} className={clsx('px-4 py-3 border-b border-gray-50', !n.read && 'bg-blue-50/30')}>
                             <div className="flex items-start gap-2">
-                              {!n.read && <div className="w-2 h-2 rounded-full bg-teal-500 mt-1.5 flex-shrink-0" />}
+                              {!n.read && <div className="w-2 h-2 rounded-full bg-blue-500 mt-1.5 flex-shrink-0" />}
                               <div className={clsx('flex-1', n.read && 'pl-4')}>
                                 <p className="text-sm font-medium text-gray-900">{n.title}</p>
                                 <p className="text-xs text-gray-500 mt-0.5">{n.message}</p>
@@ -289,7 +289,7 @@ export function AppLayout({ role }: { role: 'customer' | 'admin' }) {
                 </>
               )}
             </div>
-            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center text-white text-sm font-semibold lg:hidden">
+            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-blue-500 to-sky-600 flex items-center justify-center text-white text-sm font-semibold lg:hidden">
               {user?.name?.charAt(0) || 'U'}
             </div>
           </div>

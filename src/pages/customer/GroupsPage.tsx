@@ -78,18 +78,18 @@ export function GroupsPage() {
             <Card key={g.id} className="hover:shadow-md transition-shadow">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-lg bg-teal-50 flex items-center justify-center text-teal-600"><Users className="w-6 h-6" /></div>
+                  <div className="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600"><Users className="w-6 h-6" /></div>
                   <div><h3 className="font-semibold text-gray-900">{g.name}</h3><p className="text-xs text-gray-400">{formatDate(g.created_at)}</p></div>
                 </div>
                 <div className="flex gap-1">
-                  <button onClick={() => openEdit(g)} className="p-1.5 text-gray-400 hover:text-teal-600 rounded"><Edit2 className="w-4 h-4" /></button>
+                  <button onClick={() => openEdit(g)} className="p-1.5 text-gray-400 hover:text-blue-600 rounded"><Edit2 className="w-4 h-4" /></button>
                   <button onClick={() => openDelete(g)} className="p-1.5 text-gray-400 hover:text-red-500 rounded"><Trash2 className="w-4 h-4" /></button>
                 </div>
               </div>
               {g.description && <p className="text-sm text-gray-500 mt-3">{g.description}</p>}
               <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
                 <span className="text-sm text-gray-500">Contacts</span>
-                <span className="text-lg font-bold text-teal-600">{g.contact_count}</span>
+                <span className="text-lg font-bold text-blue-600">{g.contact_count}</span>
               </div>
             </Card>
           ))}

@@ -34,7 +34,7 @@ export function CardHeader({ title, subtitle, action, icon, className }: CardHea
   return (
     <div className={clsx('flex items-center justify-between mb-4', className)}>
       <div className="flex items-center gap-3">
-        {icon && <div className="w-10 h-10 rounded-lg bg-teal-50 flex items-center justify-center text-teal-600">{icon}</div>}
+        {icon && <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600">{icon}</div>}
         <div>
           <h3 className="text-base font-semibold text-gray-900">{title}</h3>
           {subtitle && <p className="text-sm text-gray-500 mt-0.5">{subtitle}</p>}
@@ -50,19 +50,18 @@ interface StatCardProps {
   value: string | number;
   icon: ReactNode;
   trend?: { value: string; positive: boolean };
-  color?: 'teal' | 'blue' | 'green' | 'amber' | 'red' | 'purple';
+  color?: 'blue' | 'green' | 'amber' | 'red' | 'slate';
 }
 
 const statColors = {
-  teal: 'bg-teal-50 text-teal-600',
   blue: 'bg-blue-50 text-blue-600',
   green: 'bg-green-50 text-green-600',
   amber: 'bg-amber-50 text-amber-600',
   red: 'bg-red-50 text-red-600',
-  purple: 'bg-purple-50 text-purple-600',
+  slate: 'bg-slate-100 text-slate-600',
 };
 
-export function StatCard({ label, value, icon, trend, color = 'teal' }: StatCardProps) {
+export function StatCard({ label, value, icon, trend, color = 'blue' }: StatCardProps) {
   return (
     <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 hover:shadow-md transition-shadow">
       <div className="flex items-start justify-between">

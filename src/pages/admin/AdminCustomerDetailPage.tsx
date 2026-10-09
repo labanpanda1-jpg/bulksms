@@ -92,7 +92,7 @@ export function AdminCustomerDetailPage() {
       </div>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatCard label="SMS Balance" value={formatNumber(customer.sms_balance)} icon={<Wallet className="w-6 h-6" />} color="teal" />
+        <StatCard label="SMS Balance" value={formatNumber(customer.sms_balance)} icon={<Wallet className="w-6 h-6" />} color="blue" />
         <StatCard label="Total Sent" value={formatNumber(customer.total_sent)} icon={<Send className="w-6 h-6" />} color="blue" />
         <StatCard label="Total Spent" value={formatCurrency(customer.total_spent)} icon={<Receipt className="w-6 h-6" />} color="green" />
         <StatCard label="Campaigns" value={formatNumber(customer.campaigns_count)} icon={<Mail className="w-6 h-6" />} color="amber" />
@@ -100,7 +100,7 @@ export function AdminCustomerDetailPage() {
 
       <div className="flex gap-1 border-b border-gray-200">
         {[{ id: 'overview', label: 'Overview' }, { id: 'campaigns', label: 'Campaigns' }, { id: 'transactions', label: 'Transactions' }].map(t => (
-          <button key={t.id} onClick={() => setTab(t.id as any)} className={`px-4 py-3 text-sm font-medium border-b-2 transition-colors ${tab === t.id ? 'border-teal-600 text-teal-600' : 'border-transparent text-gray-500 hover:text-gray-700'}`}>{t.label}</button>
+          <button key={t.id} onClick={() => setTab(t.id as any)} className={`px-4 py-3 text-sm font-medium border-b-2 transition-colors ${tab === t.id ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700'}`}>{t.label}</button>
         ))}
       </div>
 
@@ -158,7 +158,7 @@ export function AdminCustomerDetailPage() {
 
       <Modal open={showAdjust} onClose={() => setShowAdjust(false)} title="Adjust SMS Balance" footer={<><Button variant="outline" onClick={() => setShowAdjust(false)}>Cancel</Button><Button onClick={handleAdjust} loading={loading}>Adjust Balance</Button></>}>
         <div className="space-y-4">
-          <div className="p-3 bg-teal-50 rounded-lg text-sm text-teal-700">Current balance: <span className="font-bold">{formatNumber(customer.sms_balance)} SMS</span></div>
+          <div className="p-3 bg-blue-50 rounded-lg text-sm text-blue-700">Current balance: <span className="font-bold">{formatNumber(customer.sms_balance)} SMS</span></div>
           <Field label="Adjustment Amount" required hint="Use positive to add, negative to remove">
             <div className="flex gap-2">
               <Button variant="outline" size="icon" onClick={() => setAdjustAmount(a => a + 100)}><Plus className="w-4 h-4" /></Button>
@@ -167,7 +167,7 @@ export function AdminCustomerDetailPage() {
             </div>
           </Field>
           <Field label="Reason" required><Textarea value={adjustReason} onChange={e => setAdjustReason(e.target.value)} rows={3} placeholder="e.g. Promotional bonus, correction, etc." /></Field>
-          <div className="p-3 bg-gray-50 rounded-lg text-sm text-gray-600">New balance will be: <span className="font-bold text-teal-600">{formatNumber(customer.sms_balance + adjustAmount)} SMS</span></div>
+          <div className="p-3 bg-gray-50 rounded-lg text-sm text-gray-600">New balance will be: <span className="font-bold text-blue-600">{formatNumber(customer.sms_balance + adjustAmount)} SMS</span></div>
         </div>
       </Modal>
     </div>

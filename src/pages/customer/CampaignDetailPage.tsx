@@ -73,7 +73,7 @@ export function CampaignDetailPage() {
       </div>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatCard label="Recipients" value={formatNumber(campaign.recipient_count)} icon={<Users />} color="teal" />
+        <StatCard label="Recipients" value={formatNumber(campaign.recipient_count)} icon={<Users />} color="blue" />
         <StatCard label="SMS Units" value={formatNumber(campaign.sms_units)} icon={<Send />} color="blue" />
         <StatCard label="Cost" value={formatCurrency(campaign.cost)} icon={<Mail />} color="green" />
         <StatCard label="Delivery Rate" value={campaign.sent > 0 ? `${((campaign.delivered / campaign.sent) * 100).toFixed(1)}%` : '—'} icon={<CheckCircle />} color="amber" />
@@ -124,7 +124,7 @@ export function CampaignDetailPage() {
               {campaign.timeline.map((event, i) => (
                 <div key={event.id} className="flex gap-3">
                   <div className="flex flex-col items-center">
-                    <div className="w-8 h-8 rounded-full bg-teal-50 flex items-center justify-center text-teal-600 text-xs font-semibold">{i + 1}</div>
+                    <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 text-xs font-semibold">{i + 1}</div>
                     {i < campaign.timeline.length - 1 && <div className="w-0.5 h-8 bg-gray-200" />}
                   </div>
                   <div className="pb-4">

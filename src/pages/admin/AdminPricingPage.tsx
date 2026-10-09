@@ -118,10 +118,10 @@ export function AdminPricingPage() {
                   <td className="px-6 py-3 text-sm font-medium text-gray-900">{t.label || '—'}</td>
                   <td className="px-6 py-3 text-sm text-gray-600">{t.min_quantity.toLocaleString()}</td>
                   <td className="px-6 py-3 text-sm text-gray-600">{t.max_quantity ? t.max_quantity.toLocaleString() : 'Unlimited'}</td>
-                  <td className="px-6 py-3 text-sm font-semibold text-teal-600">{formatCurrency(t.price_per_sms)}</td>
+                  <td className="px-6 py-3 text-sm font-semibold text-blue-600">{formatCurrency(t.price_per_sms)}</td>
                   <td className="px-6 py-3"><Badge color={t.active ? 'green' : 'gray'}>{t.active ? 'Active' : 'Inactive'}</Badge></td>
                   <td className="px-6 py-3"><div className="flex gap-1">
-                    <button onClick={() => { setEditTier(t); setTierForm({ min_quantity: t.min_quantity, max_quantity: t.max_quantity || 0, price_per_sms: t.price_per_sms, label: t.label || '', active: t.active }); setShowAdd(true); }} className="p-1.5 text-gray-400 hover:text-teal-600 rounded"><Edit2 className="w-4 h-4" /></button>
+                    <button onClick={() => { setEditTier(t); setTierForm({ min_quantity: t.min_quantity, max_quantity: t.max_quantity || 0, price_per_sms: t.price_per_sms, label: t.label || '', active: t.active }); setShowAdd(true); }} className="p-1.5 text-gray-400 hover:text-blue-600 rounded"><Edit2 className="w-4 h-4" /></button>
                     <button onClick={() => setShowDelete(t)} className="p-1.5 text-gray-400 hover:text-red-500 rounded"><Trash2 className="w-4 h-4" /></button>
                   </div></td>
                 </tr>
@@ -139,7 +139,7 @@ export function AdminPricingPage() {
             <Field label="Max Quantity" hint="0 = unlimited"><Input type="number" value={tierForm.max_quantity} onChange={e => setTierForm(f => ({ ...f, max_quantity: parseInt(e.target.value) || 0 }))} /></Field>
           </div>
           <Field label="Price per SMS (KSh)" required><Input type="number" step="0.01" value={tierForm.price_per_sms} onChange={e => setTierForm(f => ({ ...f, price_per_sms: parseFloat(e.target.value) || 0 }))} /></Field>
-          <label className="flex items-center gap-2 text-sm text-gray-700"><input type="checkbox" checked={tierForm.active} onChange={e => setTierForm(f => ({ ...f, active: e.target.checked }))} className="rounded border-gray-300 text-teal-600 focus:ring-teal-500" /> Active</label>
+          <label className="flex items-center gap-2 text-sm text-gray-700"><input type="checkbox" checked={tierForm.active} onChange={e => setTierForm(f => ({ ...f, active: e.target.checked }))} className="rounded border-gray-300 text-blue-600 focus:ring-blue-500" /> Active</label>
         </div>
       </Modal>
 

@@ -82,7 +82,7 @@ export function ImportPage() {
           const current = stepMap[step];
           return (
             <div key={s} className="flex items-center gap-2">
-              <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-semibold ${i <= current ? 'bg-teal-600 text-white' : 'bg-gray-100 text-gray-400'}`}>{i + 1}</div>
+              <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-semibold ${i <= current ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-400'}`}>{i + 1}</div>
               <span className={i <= current ? 'text-gray-900 font-medium' : 'text-gray-400'}>{s}</span>
               {i < 3 && <ArrowRight className="w-4 h-4 text-gray-300" />}
             </div>
@@ -93,7 +93,7 @@ export function ImportPage() {
       {step === 'upload' && (
         <Card>
           <CardHeader title="Upload CSV File" subtitle="Upload a CSV file with your contacts" icon={<Upload className="w-5 h-5" />} />
-          <div className="border-2 border-dashed border-gray-300 rounded-xl p-12 text-center hover:border-teal-400 transition-colors cursor-pointer" onClick={() => fileRef.current?.click()}>
+          <div className="border-2 border-dashed border-gray-300 rounded-xl p-12 text-center hover:border-blue-400 transition-colors cursor-pointer" onClick={() => fileRef.current?.click()}>
             <input ref={fileRef} type="file" accept=".csv" onChange={handleFile} className="hidden" />
             <FileSpreadsheet className="w-12 h-12 text-gray-300 mx-auto mb-4" />
             <p className="text-sm font-medium text-gray-700">Click to upload or drag and drop</p>

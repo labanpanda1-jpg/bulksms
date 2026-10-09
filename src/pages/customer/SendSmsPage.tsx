@@ -154,7 +154,7 @@ export function SendSmsPage() {
                         onClick={() => toggleGroup(g.id)}
                         className={`px-3 py-1.5 text-sm rounded-lg border transition-colors ${
                           groupIds.includes(g.id)
-                            ? 'bg-teal-50 border-teal-300 text-teal-700'
+                            ? 'bg-blue-50 border-blue-300 text-blue-700'
                             : 'bg-white border-gray-200 text-gray-600 hover:bg-gray-50'
                         }`}
                       >
@@ -186,7 +186,7 @@ export function SendSmsPage() {
                   id="schedule"
                   checked={schedule}
                   onChange={e => setSchedule(e.target.checked)}
-                  className="rounded border-gray-300 text-teal-600 focus:ring-teal-500"
+                  className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                 />
                 <label htmlFor="schedule" className="text-sm text-gray-700">Schedule for later</label>
               </div>
@@ -232,7 +232,7 @@ export function SendSmsPage() {
               </div>
               <div className="border-t border-gray-100 pt-3 flex justify-between text-sm">
                 <span className="text-gray-500">Current Balance</span>
-                <span className="font-medium text-teal-600">{balance} SMS</span>
+                <span className="font-medium text-blue-600">{balance} SMS</span>
               </div>
               {insufficientBalance && (
                 <div className="flex items-center gap-2 p-3 bg-red-50 border border-red-200 rounded-lg text-xs text-red-600">

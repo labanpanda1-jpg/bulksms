@@ -101,10 +101,10 @@ export function LoginPage() {
 
           <div className="flex items-center justify-between">
             <label className="flex items-center gap-2 text-sm text-gray-600">
-              <input type="checkbox" className="rounded border-gray-300 text-teal-600 focus:ring-teal-500" />
+              <input type="checkbox" className="rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
               Remember me
             </label>
-            <Link to="/forgot-password" className="text-sm text-teal-600 hover:text-teal-700 font-medium">
+            <Link to="/forgot-password" className="text-sm text-blue-600 hover:text-blue-700 font-medium">
               Forgot password?
             </Link>
           </div>
@@ -116,7 +116,7 @@ export function LoginPage() {
 
         <p className="mt-6 text-center text-sm text-gray-500">
           Don't have an account?{' '}
-          <Link to="/register" className="text-teal-600 hover:text-teal-700 font-medium">
+          <Link to="/register" className="text-blue-600 hover:text-blue-700 font-medium">
             Create one
           </Link>
         </p>

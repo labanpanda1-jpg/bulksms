@@ -36,7 +36,7 @@ export function ReportsPage() {
       </Card>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatCard label="Total Sent" value={formatNumber(r?.total_sent || 0)} icon={<BarChart3 className="w-6 h-6" />} color="teal" />
+        <StatCard label="Total Sent" value={formatNumber(r?.total_sent || 0)} icon={<BarChart3 className="w-6 h-6" />} color="blue" />
         <StatCard label="Delivered" value={formatNumber(r?.total_delivered || 0)} icon={<BarChart3 className="w-6 h-6" />} color="green" />
         <StatCard label="Failed" value={formatNumber(r?.total_failed || 0)} icon={<BarChart3 className="w-6 h-6" />} color="red" />
         <StatCard label="Total Cost" value={`KSh ${(r?.total_cost || 0).toLocaleString()}`} icon={<BarChart3 className="w-6 h-6" />} color="blue" />

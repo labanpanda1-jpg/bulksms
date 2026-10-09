@@ -49,7 +49,7 @@ export function AdminCampaignsPage() {
                 { key: 'status', header: 'Status', render: c => <StatusBadge status={c.status} /> },
                 { key: 'delivered', header: 'Delivered', render: c => <span className="text-green-600">{formatNumber(c.delivered)}</span> },
                 { key: 'created_at', header: 'Date', render: c => <span className="text-gray-400">{formatDate(c.created_at)}</span> },
-                { key: 'actions', header: '', render: c => <Link to={`/admin/campaigns/${c.id}`} className="text-teal-600 hover:text-teal-700"><Eye className="w-4 h-4" /></Link> },
+                { key: 'actions', header: '', render: c => <Link to={`/admin/campaigns/${c.id}`} className="text-blue-600 hover:text-blue-700"><Eye className="w-4 h-4" /></Link> },
               ]}
               data={data.data}
               loading={isLoading}

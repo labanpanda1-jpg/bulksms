@@ -49,7 +49,7 @@ export function AdminSettingsPage() {
 
       <div className="flex gap-1 border-b border-gray-200">
         {tabs.map(t => (
-          <button key={t.id} onClick={() => setTab(t.id)} className={`flex items-center gap-2 px-4 py-3 text-sm font-medium border-b-2 transition-colors ${tab === t.id ? 'border-teal-600 text-teal-600' : 'border-transparent text-gray-500 hover:text-gray-700'}`}>
+          <button key={t.id} onClick={() => setTab(t.id)} className={`flex items-center gap-2 px-4 py-3 text-sm font-medium border-b-2 transition-colors ${tab === t.id ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700'}`}>
             <t.icon className="w-4 h-4" /> {t.label}
           </button>
         ))}
@@ -97,7 +97,7 @@ export function AdminSettingsPage() {
                     <input type="checkbox" checked={(currentForm.payment_methods || []).includes(m as any)} onChange={e => {
                       const methods = currentForm.payment_methods || [];
                       set('payment_methods', e.target.checked ? [...methods, m] : methods.filter(x => x !== m));
-                    }} className="rounded border-gray-300 text-teal-600 focus:ring-teal-500" />
+                    }} className="rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
                     {m === 'mpesa' ? 'M-Pesa' : m === 'card' ? 'Card' : 'Bank Transfer'}
                   </label>
                 ))}
@@ -118,7 +118,7 @@ export function AdminSettingsPage() {
             ].map(item => (
               <div key={item.key} className="flex items-center justify-between py-3 border-b border-gray-50 last:border-0">
                 <div><p className="text-sm font-medium text-gray-900">{item.label}</p><p className="text-xs text-gray-500">{item.desc}</p></div>
-                <button onClick={() => set(item.key as any, !currentForm[item.key as keyof SystemSettings])} className={`relative w-11 h-6 rounded-full transition-colors ${currentForm[item.key as keyof SystemSettings] ? 'bg-teal-600' : 'bg-gray-300'}`}>
+                <button onClick={() => set(item.key as any, !currentForm[item.key as keyof SystemSettings])} className={`relative w-11 h-6 rounded-full transition-colors ${currentForm[item.key as keyof SystemSettings] ? 'bg-blue-600' : 'bg-gray-300'}`}>
                   <span className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform ${currentForm[item.key as keyof SystemSettings] ? 'translate-x-5' : ''}`} />
                 </button>
               </div>

@@ -46,17 +46,17 @@ export function AdminCustomersPage() {
               columns={[
                 { key: 'name', header: 'Customer', render: c => (
                   <Link to={`/admin/customers/${c.id}`} className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-full bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center text-white text-xs font-semibold">{c.name.charAt(0)}</div>
-                    <div><p className="font-medium text-gray-900 hover:text-teal-600">{c.name}</p><p className="text-xs text-gray-400">{c.email}</p></div>
+                    <div className="w-9 h-9 rounded-full bg-gradient-to-br from-blue-500 to-sky-600 flex items-center justify-center text-white text-xs font-semibold">{c.name.charAt(0)}</div>
+                    <div><p className="font-medium text-gray-900 hover:text-blue-600">{c.name}</p><p className="text-xs text-gray-400">{c.email}</p></div>
                   </Link>
                 ) },
                 { key: 'business_name', header: 'Business', render: c => <span className="text-gray-600">{c.business_name || '—'}</span> },
-                { key: 'sms_balance', header: 'SMS Balance', render: c => <span className="font-semibold text-teal-600">{formatNumber(c.sms_balance)}</span> },
+                { key: 'sms_balance', header: 'SMS Balance', render: c => <span className="font-semibold text-blue-600">{formatNumber(c.sms_balance)}</span> },
                 { key: 'total_sent', header: 'Sent', render: c => formatNumber(c.total_sent) },
                 { key: 'total_spent', header: 'Spent', render: c => formatCurrency(c.total_spent) },
                 { key: 'status', header: 'Status', render: c => <Badge color={c.status === 'active' ? 'green' : 'red'}>{c.status}</Badge> },
                 { key: 'created_at', header: 'Joined', render: c => <span className="text-gray-400">{formatDate(c.created_at)}</span> },
-                { key: 'actions', header: '', render: c => <Link to={`/admin/customers/${c.id}`} className="text-teal-600 hover:text-teal-700"><Eye className="w-4 h-4" /></Link> },
+                { key: 'actions', header: '', render: c => <Link to={`/admin/customers/${c.id}`} className="text-blue-600 hover:text-blue-700"><Eye className="w-4 h-4" /></Link> },
               ]}
               data={customers}
               loading={isLoading}

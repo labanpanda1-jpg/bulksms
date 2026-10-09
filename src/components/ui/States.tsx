@@ -39,7 +39,7 @@ export function FullPageLoader({ message = 'Loading...' }: { message?: string })
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="text-center">
-        <Loader2 className="w-10 h-10 text-teal-600 animate-spin mx-auto" />
+        <Loader2 className="w-10 h-10 text-blue-600 animate-spin mx-auto" />
         <p className="mt-4 text-sm text-gray-500">{message}</p>
       </div>
     </div>
@@ -50,7 +50,7 @@ export function LoadingOverlay({ message }: { message?: string }) {
   return (
     <div className="absolute inset-0 bg-white/80 flex items-center justify-center z-10 rounded-lg">
       <div className="text-center">
-        <Loader2 className="w-8 h-8 text-teal-600 animate-spin mx-auto" />
+        <Loader2 className="w-8 h-8 text-blue-600 animate-spin mx-auto" />
         {message && <p className="mt-2 text-sm text-gray-500">{message}</p>}
       </div>
     </div>
@@ -93,7 +93,7 @@ export function ErrorState({ message, onRetry }: ErrorStateProps) {
       <h3 className="text-lg font-semibold text-gray-900">Something went wrong</h3>
       <p className="text-sm text-gray-500 mt-1 max-w-sm">{message}</p>
       {onRetry && (
-        <button onClick={onRetry} className="mt-6 px-4 py-2 text-sm font-medium text-teal-600 bg-teal-50 rounded-lg hover:bg-teal-100 transition-colors">
+        <button onClick={onRetry} className="mt-6 px-4 py-2 text-sm font-medium text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
           Try again
         </button>
       )}

@@ -91,7 +91,7 @@ export function ConfirmDialog({
               'px-4 py-2 text-sm font-medium text-white rounded-lg transition-colors disabled:opacity-50',
               variant === 'danger' && 'bg-red-600 hover:bg-red-700',
               variant === 'warning' && 'bg-amber-600 hover:bg-amber-700',
-              variant === 'primary' && 'bg-teal-600 hover:bg-teal-700',
+              variant === 'primary' && 'bg-blue-600 hover:bg-blue-700',
             )}
           >
             {loading ? 'Processing...' : confirmText}

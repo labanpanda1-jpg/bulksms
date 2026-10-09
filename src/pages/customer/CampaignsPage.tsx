@@ -68,7 +68,7 @@ export function CampaignsPage() {
             { key: 'delivered', header: 'Delivered', render: c => <span className="text-green-600">{formatNumber(c.delivered)}</span> },
             { key: 'failed', header: 'Failed', render: c => <span className="text-red-500">{formatNumber(c.failed)}</span> },
             { key: 'created_at', header: 'Created', render: c => <span className="text-gray-400">{formatDate(c.created_at)}</span> },
-            { key: 'actions', header: '', render: c => <Link to={`/app/campaigns/${c.id}`} className="text-teal-600 hover:text-teal-700"><Eye className="w-4 h-4" /></Link> },
+            { key: 'actions', header: '', render: c => <Link to={`/app/campaigns/${c.id}`} className="text-blue-600 hover:text-blue-700"><Eye className="w-4 h-4" /></Link> },
           ]}
           data={campaigns}
           loading={isLoading}

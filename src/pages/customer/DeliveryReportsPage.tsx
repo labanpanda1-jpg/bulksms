@@ -34,7 +34,7 @@ export function DeliveryReportsPage() {
       </div>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatCard label="Total Messages" value={formatNumber(r?.total_sent || 0)} icon={<FileText className="w-6 h-6" />} color="teal" />
+        <StatCard label="Total Messages" value={formatNumber(r?.total_sent || 0)} icon={<FileText className="w-6 h-6" />} color="blue" />
         <StatCard label="Delivery Rate" value={`${(r?.delivery_rate || 0).toFixed(1)}%`} icon={<FileText className="w-6 h-6" />} color="green" />
         <StatCard label="Failed Rate" value={`${(r?.failed_rate || 0).toFixed(1)}%`} icon={<FileText className="w-6 h-6" />} color="red" />
         <StatCard label="Total SMS Units" value={formatNumber(r?.total_sms_units || 0)} icon={<FileText className="w-6 h-6" />} color="blue" />

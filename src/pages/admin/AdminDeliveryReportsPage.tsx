@@ -32,7 +32,7 @@ export function AdminDeliveryReportsPage() {
       </div>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatCard label="Total Sent" value={formatNumber(totalSent)} icon={<FileText className="w-6 h-6" />} color="teal" />
+        <StatCard label="Total Sent" value={formatNumber(totalSent)} icon={<FileText className="w-6 h-6" />} color="blue" />
         <StatCard label="Delivered" value={formatNumber(totalDelivered)} icon={<FileText className="w-6 h-6" />} color="green" />
         <StatCard label="Failed" value={formatNumber(totalFailed)} icon={<FileText className="w-6 h-6" />} color="red" />
         <StatCard label="Delivery Rate" value={totalSent > 0 ? `${((totalDelivered / totalSent) * 100).toFixed(1)}%` : '—'} icon={<FileText className="w-6 h-6" />} color="blue" />

@@ -48,7 +48,7 @@ export function CustomerDashboard() {
           ))
         ) : (
           <>
-            <StatCard label="SMS Balance" value={formatNumber(stats?.balance || 0)} icon={<MessageSquare className="w-6 h-6" />} color="teal" />
+            <StatCard label="SMS Balance" value={formatNumber(stats?.balance || 0)} icon={<MessageSquare className="w-6 h-6" />} color="blue" />
             <StatCard label="Total Sent" value={formatNumber(stats?.total_sent || 0)} icon={<Send className="w-6 h-6" />} color="blue" />
             <StatCard label="Delivered" value={formatNumber(stats?.total_delivered || 0)} icon={<CheckCircle className="w-6 h-6" />} color="green" />
             <StatCard label="Delivery Rate" value={`${(stats?.delivery_rate || 0).toFixed(1)}%`} icon={<TrendingUp className="w-6 h-6" />} color="amber" />
@@ -59,18 +59,18 @@ export function CustomerDashboard() {
       {/* Quick actions */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
         {[
-          { label: 'Send SMS', icon: Send, path: '/app/send-sms', color: 'text-teal-600 bg-teal-50' },
+          { label: 'Send SMS', icon: Send, path: '/app/send-sms', color: 'text-blue-600 bg-blue-50' },
           { label: 'Create Campaign', icon: Mail, path: '/app/campaigns', color: 'text-blue-600 bg-blue-50' },
-          { label: 'Import Contacts', icon: Upload, path: '/app/import', color: 'text-purple-600 bg-purple-50' },
+          { label: 'Import Contacts', icon: Upload, path: '/app/import', color: 'text-slate-600 bg-slate-100' },
           { label: 'Buy SMS', icon: Wallet, path: '/app/buy-sms', color: 'text-green-600 bg-green-50' },
         ].map(action => (
           <Link key={action.label} to={action.path}>
-            <div className="bg-white rounded-xl border border-gray-200 p-4 hover:shadow-md hover:border-teal-200 transition-all cursor-pointer group">
+            <div className="bg-white rounded-xl border border-gray-200 p-4 hover:shadow-md hover:border-blue-200 transition-all cursor-pointer group">
               <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${action.color} mb-3`}>
                 <action.icon className="w-5 h-5" />
               </div>
               <p className="text-sm font-medium text-gray-900">{action.label}</p>
-              <ArrowRight className="w-4 h-4 text-gray-400 mt-2 group-hover:text-teal-600 transition-colors" />
+              <ArrowRight className="w-4 h-4 text-gray-400 mt-2 group-hover:text-blue-600 transition-colors" />
             </div>
           </Link>
         ))}
@@ -88,8 +88,8 @@ export function CustomerDashboard() {
                 <AreaChart data={stats?.usage_data || []}>
                   <defs>
                     <linearGradient id="sentGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#0d9488" stopOpacity={0.3} />
-                      <stop offset="95%" stopColor="#0d9488" stopOpacity={0} />
+                      <stop offset="5%" stopColor="#2563eb" stopOpacity={0.3} />
+                      <stop offset="95%" stopColor="#2563eb" stopOpacity={0} />
                     </linearGradient>
                     <linearGradient id="deliveredGrad" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="5%" stopColor="#22c55e" stopOpacity={0.3} />
@@ -100,7 +100,7 @@ export function CustomerDashboard() {
                   <XAxis dataKey="date" tick={{ fontSize: 11 }} tickFormatter={v => v.slice(5)} interval={4} />
                   <YAxis tick={{ fontSize: 11 }} />
                   <Tooltip contentStyle={{ borderRadius: 8, border: '1px solid #e5e7eb', fontSize: 12 }} />
-                  <Area type="monotone" dataKey="sent" stroke="#0d9488" fill="url(#sentGrad)" strokeWidth={2} name="Sent" />
+                  <Area type="monotone" dataKey="sent" stroke="#2563eb" fill="url(#sentGrad)" strokeWidth={2} name="Sent" />
                   <Area type="monotone" dataKey="delivered" stroke="#22c55e" fill="url(#deliveredGrad)" strokeWidth={2} name="Delivered" />
                 </AreaChart>
               </ResponsiveContainer>
@@ -110,7 +110,7 @@ export function CustomerDashboard() {
 
         {/* Recent transactions */}
         <Card>
-          <CardHeader title="Recent Transactions" action={<Link to="/app/transactions" className="text-xs text-teal-600 hover:underline">View all</Link>} icon={<Wallet className="w-5 h-5" />} />
+          <CardHeader title="Recent Transactions" action={<Link to="/app/transactions" className="text-xs text-blue-600 hover:underline">View all</Link>} icon={<Wallet className="w-5 h-5" />} />
           {isLoading ? (
             <div className="space-y-3">{Array.from({ length: 4 }).map((_, i) => <Skeleton key={i} className="h-12 w-full" />)}</div>
           ) : stats?.recent_transactions?.length ? (
@@ -135,7 +135,7 @@ export function CustomerDashboard() {
 
       {/* Recent campaigns */}
       <Card>
-        <CardHeader title="Recent Campaigns" action={<Link to="/app/campaigns" className="text-xs text-teal-600 hover:underline">View all</Link>} icon={<Mail className="w-5 h-5" />} />
+        <CardHeader title="Recent Campaigns" action={<Link to="/app/campaigns" className="text-xs text-blue-600 hover:underline">View all</Link>} icon={<Mail className="w-5 h-5" />} />
         {isLoading ? (
           <Skeleton className="h-48 w-full" />
         ) : stats?.recent_campaigns?.length ? (
@@ -154,7 +154,7 @@ export function CustomerDashboard() {
                 {stats.recent_campaigns.map((c: any) => (
                   <tr key={c.id} className="hover:bg-gray-50">
                     <td className="px-4 py-3 text-sm text-gray-900 font-medium max-w-xs truncate">
-                      <Link to={`/app/campaigns/${c.id}`} className="hover:text-teal-600">{c.name}</Link>
+                      <Link to={`/app/campaigns/${c.id}`} className="hover:text-blue-600">{c.name}</Link>
                     </td>
                     <td className="px-4 py-3 text-sm text-gray-600">{c.sender_id}</td>
                     <td className="px-4 py-3 text-sm text-gray-600">{formatNumber(c.recipient_count)}</td>

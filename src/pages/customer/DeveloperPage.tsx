@@ -82,7 +82,7 @@ export function DeveloperPage() {
             {keys.map(k => (
               <div key={k.id} className="flex items-center justify-between p-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-teal-50 flex items-center justify-center text-teal-600"><Key className="w-5 h-5" /></div>
+                  <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600"><Key className="w-5 h-5" /></div>
                   <div>
                     <div className="flex items-center gap-2"><p className="text-sm font-medium text-gray-900">{k.name}</p><Badge color={k.status === 'active' ? 'green' : 'gray'}>{k.status}</Badge></div>
                     <p className="text-xs text-gray-400 font-mono mt-0.5">{k.key_preview}</p>
@@ -90,7 +90,7 @@ export function DeveloperPage() {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <button onClick={() => copyKey(k.key)} className="p-2 text-gray-400 hover:text-teal-600 rounded-lg hover:bg-gray-50"><Copy className="w-4 h-4" /></button>
+                  <button onClick={() => copyKey(k.key)} className="p-2 text-gray-400 hover:text-blue-600 rounded-lg hover:bg-gray-50"><Copy className="w-4 h-4" /></button>
                   {k.status === 'active' && <button onClick={() => { setSelected(k); setShowRevoke(true); }} className="p-2 text-gray-400 hover:text-red-500 rounded-lg hover:bg-gray-50"><Trash2 className="w-4 h-4" /></button>}
                 </div>
               </div>

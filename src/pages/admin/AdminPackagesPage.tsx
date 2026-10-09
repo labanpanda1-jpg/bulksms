@@ -66,13 +66,13 @@ export function AdminPackagesPage() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {(packages || []).map(p => (
-          <Card key={p.id} className={`relative ${p.featured ? 'border-teal-300 border-2' : ''}`}>
-            {p.featured && <div className="absolute -top-3 left-1/2 -translate-x-1/2"><Badge color="teal"><Star className="w-3 h-3" /> Featured</Badge></div>}
+          <Card key={p.id} className={`relative ${p.featured ? 'border-blue-300 border-2' : ''}`}>
+            {p.featured && <div className="absolute -top-3 left-1/2 -translate-x-1/2"><Badge color="blue"><Star className="w-3 h-3" /> Featured</Badge></div>}
             <div className="text-center pt-2">
               <p className="text-sm font-medium text-gray-500">{p.name}</p>
               <p className="text-2xl font-bold text-gray-900 mt-1">{formatNumber(p.sms_quantity)}</p>
               <p className="text-xs text-gray-400">SMS</p>
-              <p className="text-xl font-bold text-teal-600 mt-3">{formatCurrency(p.price)}</p>
+              <p className="text-xl font-bold text-blue-600 mt-3">{formatCurrency(p.price)}</p>
               {p.discount > 0 && <Badge color="green" className="mt-1">{p.discount}% off</Badge>}
               <div className="flex items-center justify-center gap-2 mt-3">
                 <Badge color={p.active ? 'green' : 'gray'}>{p.active ? 'Active' : 'Inactive'}</Badge>
@@ -100,8 +100,8 @@ export function AdminPackagesPage() {
           </div>
           <Field label="Description"><Textarea value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} rows={2} /></Field>
           <div className="flex gap-4">
-            <label className="flex items-center gap-2 text-sm text-gray-700"><input type="checkbox" checked={form.active} onChange={e => setForm(f => ({ ...f, active: e.target.checked }))} className="rounded border-gray-300 text-teal-600 focus:ring-teal-500" /> Active</label>
-            <label className="flex items-center gap-2 text-sm text-gray-700"><input type="checkbox" checked={form.featured} onChange={e => setForm(f => ({ ...f, featured: e.target.checked }))} className="rounded border-gray-300 text-teal-600 focus:ring-teal-500" /> Featured</label>
+            <label className="flex items-center gap-2 text-sm text-gray-700"><input type="checkbox" checked={form.active} onChange={e => setForm(f => ({ ...f, active: e.target.checked }))} className="rounded border-gray-300 text-blue-600 focus:ring-blue-500" /> Active</label>
+            <label className="flex items-center gap-2 text-sm text-gray-700"><input type="checkbox" checked={form.featured} onChange={e => setForm(f => ({ ...f, featured: e.target.checked }))} className="rounded border-gray-300 text-blue-600 focus:ring-blue-500" /> Featured</label>
           </div>
         </div>
       </Modal>

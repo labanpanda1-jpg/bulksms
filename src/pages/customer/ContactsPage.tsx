@@ -104,12 +104,12 @@ export function ContactsPage() {
                 { key: 'phone', header: 'Phone' },
                 { key: 'email', header: 'Email', render: c => <span className="text-gray-500">{c.email || '—'}</span> },
                 { key: 'company', header: 'Company', render: c => <span className="text-gray-500">{c.company || '—'}</span> },
-                { key: 'group_name', header: 'Group', render: c => c.group_name ? <Badge color="teal">{c.group_name}</Badge> : <span className="text-gray-400">—</span> },
+                { key: 'group_name', header: 'Group', render: c => c.group_name ? <Badge color="blue">{c.group_name}</Badge> : <span className="text-gray-400">—</span> },
                 { key: 'status', header: 'Status', render: c => <Badge color={c.status === 'active' ? 'green' : 'gray'}>{c.status}</Badge> },
                 { key: 'created_at', header: 'Added', render: c => <span className="text-gray-400">{formatDate(c.created_at)}</span> },
                 { key: 'actions', header: '', render: c => (
                   <div className="flex items-center gap-1">
-                    <button onClick={(e) => { e.stopPropagation(); openEdit(c); }} className="p-1.5 text-gray-400 hover:text-teal-600 rounded"><Edit2 className="w-4 h-4" /></button>
+                    <button onClick={(e) => { e.stopPropagation(); openEdit(c); }} className="p-1.5 text-gray-400 hover:text-blue-600 rounded"><Edit2 className="w-4 h-4" /></button>
                     <button onClick={(e) => { e.stopPropagation(); openDelete(c); }} className="p-1.5 text-gray-400 hover:text-red-500 rounded"><Trash2 className="w-4 h-4" /></button>
                   </div>
                 ) },
