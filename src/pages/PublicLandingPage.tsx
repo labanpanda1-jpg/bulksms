@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Check, ChevronDown, Cloud, FileText, Mail, MessageSquare, Phone, ShieldCheck, Sparkles, Zap } from 'lucide-react';
+import { CookieBanner } from '@/components/CookieBanner';
 
 const posts = [
   { category: 'Product updates', title: 'Why every Kenyan business needs a reliable SMS channel', date: '09 Oct 2026', excerpt: 'Turn important customer moments into conversations with simple, trackable bulk messaging.', published: true },
@@ -42,6 +43,7 @@ export function PublicLandingPage() {
         <section id="faq" className="bg-[#07133f] text-white"><div className="max-w-4xl mx-auto px-5 py-24"><p className="text-sm font-bold uppercase tracking-[.2em] text-sky-300">Questions, answered</p><h2 className="mt-3 text-4xl font-black">Make the next message count.</h2><div className="mt-10 divide-y divide-white/15">{['How soon can I start sending SMS?', 'What documents do I need for a sender ID?', 'How does M-Pesa STK Push work?'].map((question, index) => <div key={question} className="py-5"><button className="w-full flex items-center justify-between text-left font-bold" onClick={() => setFaq(faq === index ? null : index)}>{question}<ChevronDown className={`w-5 h-5 transition ${faq === index ? 'rotate-180 text-sky-300' : ''}`} /></button>{faq === index && <p className="mt-3 max-w-2xl text-sm leading-7 text-blue-100">Create an account, choose a package and complete your checkout. Sender ID applications need your KRA PIN certificate, business registration certificate and an 11-character name.</p>}</div>)}</div></div></section>
       </main>
       <footer className="bg-[#050d2c] text-blue-100"><div className="max-w-7xl mx-auto px-5 py-10 flex flex-col md:flex-row justify-between gap-6 text-sm"><div><div className="flex items-center gap-2 font-black text-white"><Cloud className="w-5 h-5 text-sky-300" /> ABANCOOL</div><p className="mt-3 text-blue-300">Communications that grow with you.</p></div><div className="flex flex-wrap gap-5"><span className="flex items-center gap-2"><Mail className="w-4 h-4" /> support@abancool.com</span><span className="flex items-center gap-2"><Phone className="w-4 h-4" /> 0111 679 286</span><span className="flex items-center gap-2"><ShieldCheck className="w-4 h-4" /> Secure payments</span></div></div></footer>
+      <CookieBanner />
     </div>
   );
 }
