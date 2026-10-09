@@ -1,9 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Check, ChevronDown, Cloud, FileText, Mail, MessageSquare, Phone, ShieldCheck, Sparkles, Zap } from 'lucide-react';
+import { ArrowRight, Check, CheckCircle2, ChevronDown, Cloud, FileText, Mail, MessageSquare, Phone, ShieldCheck, Sparkles, Zap } from 'lucide-react';
 import { CookieBanner } from '@/components/CookieBanner';
 
-const heroImage = 'https://images.pexels.com/photos/9363541/pexels-photo-9363541.jpeg?auto=compress&cs=tinysrgb&h=650&w=940';
 const featureImages = {
   sms: 'https://images.pexels.com/photos/6214968/pexels-photo-6214968.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
   sender: 'https://images.pexels.com/photos/5387173/pexels-photo-5387173.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
@@ -15,6 +14,116 @@ const posts = [
   { category: 'Guides', title: 'How to choose a memorable sender ID', date: '02 Oct 2026', excerpt: 'A practical guide to building recognition and trust across Safaricom, Airtel and Telkom.', published: true },
   { category: 'Business growth', title: 'Five campaigns you can automate this week', date: '25 Sep 2026', excerpt: 'Welcome messages, reminders, offers and delivery updates that keep customers close.', published: true },
 ];
+
+const fullMessage = 'Your appointment is confirmed for tomorrow at 10:00 AM. Reply YES to confirm.';
+
+function AnimatedPhone() {
+  const [typed, setTyped] = useState('');
+  const [phase, setPhase] = useState<'typing' | 'sent' | 'delivered'>('typing');
+  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+
+  useEffect(() => {
+    let i = 0;
+    setTyped('');
+    setPhase('typing');
+
+    const tick = () => {
+      i++;
+      setTyped(fullMessage.slice(0, i));
+      if (i < fullMessage.length) {
+        timer.current = setTimeout(tick, 45);
+      } else {
+        timer.current = setTimeout(() => setPhase('sent'), 600);
+      }
+    };
+    tick();
+
+    return () => { if (timer.current) clearTimeout(timer.current); };
+  }, []);
+
+  useEffect(() => {
+    if (phase !== 'sent') return;
+    const t = setTimeout(() => setPhase('delivered'), 1400);
+    return () => clearTimeout(t);
+  }, [phase]);
+
+  useEffect(() => {
+    if (phase !== 'delivered') return;
+    const t = setTimeout(() => {
+      setTyped('');
+      setPhase('typing');
+      let i = 0;
+      const tick = () => {
+        i++;
+        setTyped(fullMessage.slice(0, i));
+        if (i < fullMessage.length) {
+          timer.current = setTimeout(tick, 45);
+        } else {
+          timer.current = setTimeout(() => setPhase('sent'), 600);
+        }
+      };
+      tick();
+    }, 2800);
+    return () => clearTimeout(t);
+  }, [phase]);
+
+  return (
+    <div className="relative mx-auto w-[270px]">
+      <div className="absolute -inset-6 rounded-[3rem] bg-sky-300/20 blur-2xl" />
+      <div className="relative rounded-[2.5rem] border-[6px] border-slate-800 bg-slate-900 shadow-2xl">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 h-6 w-28 rounded-b-2xl bg-slate-800 z-10" />
+        <div className="rounded-[2rem] overflow-hidden bg-gradient-to-b from-blue-50 to-white h-[480px] flex flex-col">
+          <div className="bg-[#07133f] text-white px-4 py-3 flex items-center gap-2">
+            <span className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-xs font-black">AB</span>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs font-bold truncate">ABANCOOL</p>
+              <p className="text-[9px] text-blue-200">Sender ID</p>
+            </div>
+            <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${phase === 'delivered' ? 'bg-green-500/30 text-green-300' : 'bg-blue-500/30 text-blue-200'}`}>
+              {phase === 'typing' ? 'drafting' : phase === 'sent' ? 'sending' : 'delivered'}
+            </span>
+          </div>
+          <div className="flex-1 px-4 py-5 space-y-3 overflow-hidden">
+            <div className="flex justify-end">
+              <div className="max-w-[80%] rounded-2xl rounded-tr-sm bg-blue-600 text-white px-3.5 py-2.5 shadow-md">
+                <p className="text-[11px] leading-relaxed min-h-[2.5rem]">
+                  {typed}
+                  {phase === 'typing' && <span className="inline-block w-0.5 h-3.5 bg-white ml-0.5 animate-pulse align-middle" />}
+                </p>
+                {phase !== 'typing' && (
+                  <p className="text-[8px] text-blue-200 mt-1 text-right flex items-center justify-end gap-1">
+                    {phase === 'delivered' && <CheckCheck />}
+                    {phase === 'sent' ? 'sending…' : 'delivered'}
+                  </p>
+                )}
+              </div>
+            </div>
+            {phase === 'delivered' && (
+              <div className="flex justify-start animate-[fade-in_.4s_ease-out]">
+                <div className="max-w-[80%] rounded-2xl rounded-tl-sm bg-white border border-slate-200 px-3.5 py-2.5 shadow-sm">
+                  <p className="text-[11px] leading-relaxed text-slate-700">YES</p>
+                  <p className="text-[8px] text-slate-400 mt-1">customer reply</p>
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="px-4 pb-5">
+            <div className="flex items-center gap-2 rounded-full bg-slate-100 px-3 py-2">
+              <div className="flex-1 text-[10px] text-slate-400">{phase === 'typing' ? 'typing message…' : 'message sent'}</div>
+              <div className={`w-7 h-7 rounded-full flex items-center justify-center transition ${phase === 'typing' ? 'bg-slate-300' : 'bg-blue-600'}`}>
+                <ArrowRight className="w-3.5 h-3.5 text-white" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CheckCheck() {
+  return <span className="inline-flex items-center"><Check className="w-2.5 h-2.5" /><Check className="w-2.5 h-2.5 -ml-1.5" /></span>;
+}
 
 export function PublicLandingPage() {
   const [faq, setFaq] = useState<number | null>(0);
@@ -37,8 +146,8 @@ export function PublicLandingPage() {
 
       <main>
         <section className="relative overflow-hidden bg-gradient-to-br from-[#071b8d] via-[#123fe2] to-[#1559ff] text-white"><div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '22px 22px' }} /><div className="relative max-w-7xl mx-auto px-5 py-24 lg:py-32 grid lg:grid-cols-[1.1fr_.9fr] gap-14 items-center">
-          <div><p className="uppercase tracking-[.28em] text-xs font-bold text-blue-100">Bulk SMS · Payments · Digital services</p><h1 className="mt-5 text-5xl sm:text-6xl lg:text-7xl font-black leading-[.98] tracking-tight">Reach people.<br /><span className="text-sky-200">Grow boldly.</span></h1><p className="mt-7 max-w-xl text-lg leading-8 text-blue-100">Professional bulk SMS for Kenyan businesses, with M-Pesa payments, branded sender IDs and delivery reports that keep every message accountable.</p><div className="mt-9 flex flex-wrap gap-3"><Link to="/register" className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 font-bold text-blue-700 hover:bg-blue-50 transition">Create your account <ArrowRight className="w-4 h-4" /></Link><a href="#solutions" className="inline-flex items-center rounded-full border border-white/30 px-6 py-3.5 font-bold text-white hover:bg-white/10 transition">Explore solutions</a></div><div className="mt-10 flex flex-wrap gap-6 text-sm text-blue-100"><span className="flex items-center gap-2"><Check className="w-4 h-4 text-sky-200" /> 5 free SMS to start</span><span className="flex items-center gap-2"><Check className="w-4 h-4 text-sky-200" /> Local M-Pesa checkout</span></div></div>
-          <div className="relative"><div className="absolute -inset-8 rounded-full bg-sky-300/20 blur-3xl" /><div className="relative rounded-3xl border border-white/20 bg-white/10 p-5 shadow-2xl backdrop-blur"><div className="rounded-2xl bg-white p-5 text-slate-900"><div className="relative mb-5 overflow-hidden rounded-xl"><img src={heroImage} alt="Business owner using ABANCOOL SMS tools on a smartphone" className="h-36 w-full object-cover" loading="eager" /><div className="absolute inset-0 bg-gradient-to-t from-[#07133f]/70 via-transparent to-transparent" /><span className="absolute bottom-3 left-3 rounded-full bg-white/90 px-3 py-1 text-[10px] font-bold text-blue-700">Messaging that moves business</span></div><div className="flex items-center justify-between"><div><p className="text-xs text-slate-400">Campaign performance</p><p className="mt-1 text-2xl font-black">+42.8%</p></div><span className="rounded-full bg-sky-50 px-3 py-1 text-xs font-bold text-sky-600">This month</span></div><div className="mt-7 flex h-36 items-end gap-3">{[42, 65, 50, 78, 63, 92, 84].map((height, index) => <div key={index} className="flex-1 rounded-t-lg bg-gradient-to-t from-blue-600 to-sky-300" style={{ height: `${height}%` }} />)}</div><div className="mt-5 grid grid-cols-3 gap-3 border-t border-slate-100 pt-4 text-center"><div><p className="text-lg font-black">98.4%</p><p className="text-[10px] uppercase tracking-wide text-slate-400">Delivered</p></div><div><p className="text-lg font-black">24/7</p><p className="text-[10px] uppercase tracking-wide text-slate-400">Visibility</p></div><div><p className="text-lg font-black">KES 0.80</p><p className="text-[10px] uppercase tracking-wide text-slate-400">From / SMS</p></div></div></div></div></div>
+          <div><p className="uppercase tracking-[.28em] text-xs font-bold text-blue-100">Bulk SMS · Payments · Digital services</p><h1 className="mt-5 text-5xl sm:text-6xl lg:text-7xl font-black leading-[.98] tracking-tight">Reach people.<br /><span className="text-sky-200">Grow boldly.</span></h1><p className="mt-7 max-w-xl text-lg leading-8 text-blue-100">Professional bulk SMS for Kenyan businesses, with M-Pesa payments, branded sender IDs and delivery reports that keep every message accountable.</p><div className="mt-9 flex flex-wrap gap-3"><Link to="/register" className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 font-bold text-blue-700 hover:bg-blue-50 transition">Create your account <ArrowRight className="w-4 h-4" /></Link><a href="#solutions" className="inline-flex items-center rounded-full border border-white/30 px-6 py-3.5 font-bold text-white hover:bg-white/10 transition">Explore solutions</a></div><div className="mt-10 flex flex-wrap gap-6 text-sm text-blue-100"><span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-sky-200" /> 5 free SMS to start</span><span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-sky-200" /> Local M-Pesa checkout</span><span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-sky-200" /> Real-time delivery reports</span></div></div>
+          <div className="relative flex flex-col items-center gap-6"><AnimatedPhone /><div className="flex items-center gap-4 text-xs text-blue-100"><span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" /> live demo</span><span className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-sky-200" /> delivery confirmed</span></div></div>
         </div></section>
 
         <section id="solutions" className="max-w-7xl mx-auto px-5 py-24"><div className="max-w-2xl"><p className="text-sm font-bold uppercase tracking-[.2em] text-blue-600">Everything in one place</p><h2 className="mt-3 text-4xl font-black tracking-tight">Tools that move your business forward.</h2><p className="mt-4 text-slate-500 leading-7">From your first welcome message to your thousandth order, ABANCOOL helps you communicate with confidence.</p></div><div className="mt-12 grid md:grid-cols-3 gap-5"><Feature image={featureImages.sms} icon={<MessageSquare />} title="Bulk SMS" text="Send targeted campaigns, schedule reminders and track delivery in real time." /><Feature image={featureImages.sender} icon={<Sparkles />} title="Sender ID marketplace" text="Apply for a professional branded sender ID across Safaricom, Airtel and Telkom." /><Feature image={featureImages.payments} icon={<Zap />} title="M-Pesa payments" text="Collect payments through secure Daraja STK Push and receive instant receipts." /></div></section>
