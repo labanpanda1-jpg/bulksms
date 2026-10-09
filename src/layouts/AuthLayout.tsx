@@ -1,5 +1,6 @@
 import { type ReactNode } from 'react';
 import { MessageSquare } from 'lucide-react';
+import { ProductDemo } from '@/components/ProductDemo';
 
 export function AuthLayout({ children }: { children: ReactNode }) {
   return (
@@ -10,7 +11,7 @@ export function AuthLayout({ children }: { children: ReactNode }) {
           <div className="absolute top-20 left-20 w-72 h-72 bg-white rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-20 w-96 h-96 bg-sky-300 rounded-full blur-3xl" />
         </div>
-        <div className="relative z-10 flex flex-col justify-between p-12 text-white">
+        <div className="relative z-10 flex flex-col justify-between p-10 text-white">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-white/20 backdrop-blur rounded-lg flex items-center justify-center">
               <MessageSquare className="w-6 h-6" />
@@ -18,18 +19,21 @@ export function AuthLayout({ children }: { children: ReactNode }) {
             <span className="text-xl font-bold">ABANCOOL</span>
           </div>
           <div>
-            <h1 className="text-4xl font-bold leading-tight">Bulk SMS for<br />growing businesses</h1>
-            <p className="mt-4 text-lg text-blue-100 max-w-md">
+            <h1 className="text-3xl font-bold leading-tight">Bulk SMS for<br />growing businesses</h1>
+            <p className="mt-3 text-base text-blue-100 max-w-md">
               Reach thousands of customers instantly. Manage contacts, schedule campaigns, and track delivery in real-time.
             </p>
-            <div className="mt-8 space-y-3">
+            <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2">
               {['5 free SMS on registration', 'Real-time delivery reports', 'Contact management & groups', 'Affordable volume pricing'].map(feat => (
-                <div key={feat} className="flex items-center gap-3 text-blue-50">
+                <div key={feat} className="flex items-center gap-2 text-sm text-blue-50">
                   <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-xs">✓</div>
                   <span>{feat}</span>
                 </div>
               ))}
             </div>
+          </div>
+          <div className="[&_span]:text-blue-100 [&_.text-blue-200\\/50]:text-blue-200/40">
+            <ProductDemo />
           </div>
           <p className="text-sm text-blue-200">© 2026 ABANCOOL Bulk SMS. All rights reserved.</p>
         </div>
