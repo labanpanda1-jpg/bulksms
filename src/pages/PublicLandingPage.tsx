@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import { api } from '@/services/api';
+import type { SenderIdPricing } from '@/types';
 import { ArrowRight, Check, CheckCircle2, ChevronDown, Cloud, FileText, Mail, MessageSquare, Phone, ShieldCheck, Sparkles, Zap } from 'lucide-react';
 import { CookieBanner } from '@/components/CookieBanner';
 import { ProductDemo } from '@/components/ProductDemo';
@@ -16,8 +19,15 @@ const posts = [
   { category: 'Business growth', title: 'Five campaigns you can automate this week', date: '25 Sep 2026', excerpt: 'Welcome messages, reminders, offers and delivery updates that keep customers close.', published: true },
 ];
 
+const DEFAULT_PRICING: SenderIdPricing = { safaricom: 7500, airtel: 7500, telkom: 7500 };
+
 export function PublicLandingPage() {
   const [faq, setFaq] = useState<number | null>(0);
+  const { data: pricingData } = useQuery({
+    queryKey: ['pricing'],
+    queryFn: async () => { try { const res = await api.pricing.get(); return res.data; } catch { return null; } },
+  });
+  const pricing = pricingData?.sender_id_pricing ?? DEFAULT_PRICING;
   const [publishedPosts] = useState(() => {
     try {
       const saved = JSON.parse(localStorage.getItem('abancool_content') || 'null') as typeof posts | null;
@@ -43,7 +53,7 @@ export function PublicLandingPage() {
 
         <section id="solutions" className="max-w-7xl mx-auto px-5 py-24"><div className="max-w-2xl"><p className="text-sm font-bold uppercase tracking-[.2em] text-blue-600">Everything in one place</p><h2 className="mt-3 text-4xl font-black tracking-tight">Tools that move your business forward.</h2><p className="mt-4 text-slate-500 leading-7">From your first welcome message to your thousandth order, ABANCOOL helps you communicate with confidence.</p></div><div className="mt-12 grid md:grid-cols-3 gap-5"><Feature image={featureImages.sms} icon={<MessageSquare />} title="Bulk SMS" text="Send targeted campaigns, schedule reminders and track delivery in real time." /><Feature image={featureImages.sender} icon={<Sparkles />} title="Sender ID marketplace" text="Apply for a professional branded sender ID across Safaricom, Airtel and Telkom." /><Feature image={featureImages.payments} icon={<Zap />} title="M-Pesa payments" text="Collect payments through secure Daraja STK Push and receive instant receipts." /></div></section>
 
-        <section id="pricing" className="bg-slate-50 border-y border-slate-100"><div className="max-w-7xl mx-auto px-5 py-24 grid lg:grid-cols-[.8fr_1.2fr] gap-12 items-center"><div><p className="text-sm font-bold uppercase tracking-[.2em] text-blue-600">Sender ID marketplace</p><h2 className="mt-3 text-4xl font-black tracking-tight">Be remembered in every inbox.</h2><p className="mt-5 text-slate-500 leading-7">Reserve your business name for just <strong className="text-slate-900">KES 7,500</strong> per network. Submit your KRA PIN and business registration certificate, then our team reviews your request within 48 hours.</p><Link to="/register" className="mt-7 inline-flex items-center gap-2 font-bold text-blue-600">Apply for a sender ID <ArrowRight className="w-4 h-4" /></Link></div><div className="grid sm:grid-cols-3 gap-4"><Network name="Safaricom" price="7,500" color="bg-sky-500" /><Network name="Airtel" price="7,500" color="bg-red-500" /><Network name="Telkom" price="7,500" color="bg-orange-500" /></div></div></section>
+        <section id="pricing" className="bg-slate-50 border-y border-slate-100"><div className="max-w-7xl mx-auto px-5 py-24 grid lg:grid-cols-[.8fr_1.2fr] gap-12 items-center"><div><p className="text-sm font-bold uppercase tracking-[.2em] text-blue-600">Sender ID marketplace</p><h2 className="mt-3 text-4xl font-black tracking-tight">Be remembered in every inbox.</h2><p className="mt-5 text-slate-500 leading-7">Reserve your business name for just <strong className="text-slate-900">KES {Math.min(pricing.safaricom, pricing.airtel, pricing.telkom).toLocaleString()}</strong> per network. Submit your KRA PIN and business registration certificate, then our team reviews your request within 48 hours.</p><Link to="/register" className="mt-7 inline-flex items-center gap-2 font-bold text-blue-600">Apply for a sender ID <ArrowRight className="w-4 h-4" /></Link></div><div className="grid sm:grid-cols-3 gap-4"><Network name="Safaricom" price={pricing.safaricom.toLocaleString()} color="bg-sky-500" /><Network name="Airtel" price={pricing.airtel.toLocaleString()} color="bg-red-500" /><Network name="Telkom" price={pricing.telkom.toLocaleString()} color="bg-orange-500" /></div></div></section>
 
         <section id="stories" className="max-w-7xl mx-auto px-5 py-24"><div className="flex items-end justify-between gap-5"><div><p className="text-sm font-bold uppercase tracking-[.2em] text-blue-600">From the newsroom</p><h2 className="mt-3 text-4xl font-black tracking-tight">Ideas for growing smarter.</h2></div><a href="#stories" className="hidden sm:flex items-center gap-2 text-sm font-bold text-blue-600">View all news <ArrowRight className="w-4 h-4" /></a></div><div className="mt-10 grid md:grid-cols-3 gap-6">{publishedPosts.map(post => <article key={post.title} className="group rounded-2xl border border-slate-200 p-6 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-100 transition"><div className="w-11 h-11 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center"><FileText className="w-5 h-5" /></div><p className="mt-8 text-xs font-bold uppercase tracking-widest text-blue-600">{post.category}</p><h3 className="mt-3 text-xl font-black leading-snug group-hover:text-blue-600">{post.title}</h3><p className="mt-3 text-sm leading-6 text-slate-500">{post.excerpt}</p><p className="mt-6 text-xs font-semibold text-slate-400">{post.date}</p></article>)}</div></section>
 

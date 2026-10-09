@@ -799,6 +799,7 @@ export const mockPricing = {
       currency: db.settings.currency,
       currency_symbol: db.settings.currency_symbol,
       default_price_per_sms: db.settings.default_price_per_sms,
+      sender_id_pricing: db.settings.sender_id_pricing,
       tiers: db.tiers.filter(t => t.active).sort((a, b) => a.min_quantity - b.min_quantity),
     });
   },
@@ -1211,6 +1212,7 @@ export const mockAdmin = {
       low_balance_threshold: db.settings.low_balance_threshold,
       max_message_length: db.settings.max_message_length,
       minimum_purchase: db.settings.minimum_purchase,
+      sender_id_pricing: db.settings.sender_id_pricing,
       tiers: db.tiers.sort((a, b) => a.min_quantity - b.min_quantity),
     });
   },
@@ -1230,6 +1232,10 @@ export const mockAdmin = {
     }
     if (data.max_message_length !== undefined) db.settings.max_message_length = data.max_message_length;
     if (data.minimum_purchase !== undefined) db.settings.minimum_purchase = data.minimum_purchase;
+    if (data.sender_id_pricing !== undefined) {
+      addAuditLog(admin.id, admin.name, 'UPDATE_PRICING', 'Sender ID Pricing', 'SystemSetting', JSON.stringify(db.settings.sender_id_pricing), JSON.stringify(data.sender_id_pricing));
+      db.settings.sender_id_pricing = data.sender_id_pricing;
+    }
     saveDb();
     return ok({ ...db.settings, tiers: db.tiers }, 'Pricing updated successfully.');
   },

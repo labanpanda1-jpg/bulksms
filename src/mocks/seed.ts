@@ -40,6 +40,7 @@ export const seedSettings: SystemSettings = {
   email_notifications: true,
   sms_notifications: true,
   low_balance_alerts: true,
+  sender_id_pricing: { safaricom: 7500, airtel: 7500, telkom: 7500 },
 };
 
 // =========================

@@ -392,6 +392,12 @@ export interface AuditLog {
   created_at: string;
 }
 
+export interface SenderIdPricing {
+  safaricom: number;
+  airtel: number;
+  telkom: number;
+}
+
 export interface SystemSettings {
   company_name: string;
   support_email: string;
@@ -408,6 +414,7 @@ export interface SystemSettings {
   email_notifications: boolean;
   sms_notifications: boolean;
   low_balance_alerts: boolean;
+  sender_id_pricing: SenderIdPricing;
 }
 
 // =========================

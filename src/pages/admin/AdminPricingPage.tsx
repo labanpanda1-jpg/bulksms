@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { CreditCard, Plus, Edit2, Trash2, Save, X } from 'lucide-react';
+import { CreditCard, Radio, Plus, Edit2, Trash2, Save, X } from 'lucide-react';
 import { api } from '@/services/api';
 import { Card, CardHeader } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
@@ -9,7 +9,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Modal, ConfirmDialog } from '@/components/ui/Modal';
 import { useToast } from '@/hooks/useToast';
 import { formatCurrency } from '@/lib/sms';
-import type { PricingTier } from '@/types';
+import type { PricingTier, SenderIdPricing } from '@/types';
 
 export function AdminPricingPage() {
   const { toast } = useToast();
@@ -19,6 +19,7 @@ export function AdminPricingPage() {
   const [showDelete, setShowDelete] = useState<PricingTier | null>(null);
   const [loading, setLoading] = useState(false);
   const [config, setConfig] = useState({ default_price_per_sms: 0.50, free_registration_credits: 5, low_balance_threshold: 100, max_message_length: 918, minimum_purchase: 500 });
+  const [senderIdPricing, setSenderIdPricing] = useState<SenderIdPricing>({ safaricom: 7500, airtel: 7500, telkom: 7500 });
   const [tierForm, setTierForm] = useState({ min_quantity: 0, max_quantity: 0, price_per_sms: 0, label: '', active: true });
   const [savingConfig, setSavingConfig] = useState(false);
 
@@ -33,19 +34,22 @@ export function AdminPricingPage() {
 
   // Sync config from server
   useState(() => {
-    if (pricing) setConfig({
-      default_price_per_sms: pricing.default_price_per_sms,
-      free_registration_credits: pricing.free_registration_credits,
-      low_balance_threshold: pricing.low_balance_threshold,
-      max_message_length: pricing.max_message_length,
-      minimum_purchase: pricing.minimum_purchase,
-    });
+    if (pricing) {
+      setConfig({
+        default_price_per_sms: pricing.default_price_per_sms,
+        free_registration_credits: pricing.free_registration_credits,
+        low_balance_threshold: pricing.low_balance_threshold,
+        max_message_length: pricing.max_message_length,
+        minimum_purchase: pricing.minimum_purchase,
+      });
+      if (pricing.sender_id_pricing) setSenderIdPricing(pricing.sender_id_pricing);
+    }
   });
 
   const handleSaveConfig = async () => {
     setSavingConfig(true);
     try {
-      const res = await api.admin.updatePricing(config);
+      const res = await api.admin.updatePricing({ ...config, sender_id_pricing: senderIdPricing });
       if (res.success) { toast(res.message, 'success'); queryClient.invalidateQueries({ queryKey: ['admin-pricing'] }); queryClient.invalidateQueries({ queryKey: ['pricing'] }); }
       else toast(res.message, 'error');
     } catch { toast('Failed to save pricing', 'error'); }
@@ -93,6 +97,16 @@ export function AdminPricingPage() {
           <Field label="Low Balance Threshold"><Input type="number" value={config.low_balance_threshold} onChange={e => setConfig(c => ({ ...c, low_balance_threshold: parseInt(e.target.value) || 0 }))} /></Field>
           <Field label="Max Message Length"><Input type="number" value={config.max_message_length} onChange={e => setConfig(c => ({ ...c, max_message_length: parseInt(e.target.value) || 0 }))} /></Field>
           <Field label="Minimum Purchase"><Input type="number" value={config.minimum_purchase} onChange={e => setConfig(c => ({ ...c, minimum_purchase: parseInt(e.target.value) || 0 }))} /></Field>
+        </div>
+        <div className="mt-4"><Button onClick={handleSaveConfig} loading={savingConfig}><Save className="w-4 h-4" /> Save Configuration</Button></div>
+      </Card>
+
+      <Card>
+        <CardHeader title="Sender ID Pricing" subtitle="One-time application fee per network" icon={<Radio className="w-5 h-5" />} />
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <Field label="Safaricom (KSh)"><Input type="number" value={senderIdPricing.safaricom} onChange={e => setSenderIdPricing(p => ({ ...p, safaricom: parseInt(e.target.value) || 0 }))} /></Field>
+          <Field label="Airtel (KSh)"><Input type="number" value={senderIdPricing.airtel} onChange={e => setSenderIdPricing(p => ({ ...p, airtel: parseInt(e.target.value) || 0 }))} /></Field>
+          <Field label="Telkom (KSh)"><Input type="number" value={senderIdPricing.telkom} onChange={e => setSenderIdPricing(p => ({ ...p, telkom: parseInt(e.target.value) || 0 }))} /></Field>
         </div>
         <div className="mt-4"><Button onClick={handleSaveConfig} loading={savingConfig}><Save className="w-4 h-4" /> Save Configuration</Button></div>
       </Card>
